@@ -7,24 +7,40 @@ namespace OPM.DBHandler
 
     class OPMDBHandler
     {
-        public static int GetConnection(ref SqlConnection con)
+        public static string MysqlConnectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
+        public static int GetConnection(string query)
         {
-            try 
+            //try 
+            //{
+                //string strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
+                //con = new SqlConnection(MysqlConnectionString);
+                //return 1;
+            //}
+            //catch(Exception)
+            //{
+                //return 0;
+            //}
+            try
             {
-                string strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
-                con = new SqlConnection(strconnection);
+                SqlConnection Conn = new SqlConnection(MysqlConnectionString);
+                Conn.Open();
+                SqlCommand comm = new SqlCommand(query, Conn);
+                comm.ExecuteNonQuery();
                 return 1;
+                //Conn.Close();
+                //MessageBox.Show("Succeeded");
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return 0;
+                //MessageBox.Show(ex.Message);
             }
         }
 
         public static int fInsertData(string strSqlCommand)
         {
-            String strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
-            SqlConnection con = new SqlConnection(strconnection);
+            //String strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
+            SqlConnection con = new SqlConnection(MysqlConnectionString);
 
             try
             {
@@ -46,8 +62,8 @@ namespace OPM.DBHandler
         }
         public static int fQuerryData1(string strQuerry)
         {
-            String strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
-            SqlConnection con = new SqlConnection(strconnection);
+            //String strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
+            SqlConnection con = new SqlConnection(MysqlConnectionString);
             try
             {
                 con.Open();
@@ -83,8 +99,8 @@ namespace OPM.DBHandler
 
         public static int fQuerryData(string strQuerry, ref DataSet ds)
         {
-            String strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
-            SqlConnection con = new SqlConnection(strconnection);
+            //String strconnection = @"Data Source=DESKTOP-9ILF79D\SQLEXPRESS; Initial Catalog = OPM; User ID = sa; Password=123456";
+            SqlConnection con = new SqlConnection(MysqlConnectionString);
             SqlDataAdapter adapter = new SqlDataAdapter();
             SqlCommand command;
 
