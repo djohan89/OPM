@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Configuration;
 namespace OPM.DBHandler
 {
 
-    class OPMDBHandler
+    class OPMDBHandler 
     {
         public static string MysqlConnectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
         public static int GetConnection(string query)
