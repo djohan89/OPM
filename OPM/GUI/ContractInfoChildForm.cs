@@ -100,7 +100,7 @@ namespace OPM.GUI
                 dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
             }
         }*/
-
+        public static string tam;
         private void btnSave_Click(object sender, EventArgs e)
         {
             int ret = 0;
@@ -124,13 +124,29 @@ namespace OPM.GUI
             if(0==ret)
             {
                 /*Create Folder Contract on F Disk*/
-                string strContractDirectory = "F:\\OPM\\" + tbContract.Text;
-                strContractDirectory = strContractDirectory.Replace('/','_');
-                strContractDirectory = strContractDirectory.Replace('-', '_');
+                //string strContractDirectory = "F:\\OPM\\" + tbContract.Text;
+                //strContractDirectory = strContractDirectory.Replace('/','_');
+                //strContractDirectory = strContractDirectory.Replace('-', '_');
+                //Tạo thư mục trong ổ đĩa D hoặc E
+                DriveInfo[] driveInfos = DriveInfo.GetDrives();
+                foreach (DriveInfo driveInfo in driveInfos)
+                {
+                    //MessageBox.Show(driveInfo.Name.ToString());
+                    if (String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"D:\") == 0 || String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"E:\") == 0)
+                    {
+                        //MessageBox.Show(driveInfo.Name.ToString().Substring(0, 1));
+                        tam = driveInfo.Name.ToString().Substring(0, 3);
+                        break;
+                    }
+                }
+                Directory.CreateDirectory(tam + "OPM");
+                Directory.CreateDirectory(tam + "OPM" + tbContract.Text);
+                string strContractDirectory = tam + "OPM\\" + tbContract.Text;
                 if (!Directory.Exists(strContractDirectory))
                 {
 
-                    Directory.CreateDirectory(strContractDirectory);
+                    //Directory.CreateDirectory(strContractDirectory);
+                    MessageBox.Show(strContractDirectory);
                     MessageBox.Show("Folder Contract have been created!!!");
                 }
 
