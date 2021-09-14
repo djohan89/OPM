@@ -107,7 +107,9 @@ namespace OPM.GUI
                     MessageBox.Show(ConstantVar.CreateNewPOSuccess);
                     UpdateCatalogPanel(txbPOName.Text);
                     /*Create Bao Lanh Thuc Hien Hop Dong*/
-                    string fileBLTUPO_temp = @"F:\LP\BLPO_Template.docx";
+                    Directory.CreateDirectory(DriveName + "LP");
+                    string fileBLTUPO_temp = DriveName+@"LP\BLPO_Template.docx";
+                    //string fileBLTUPO_temp = @"F:\LP\BLPO_Template.docx";
                     string strBLTUPOName = strPODirectory + "\\De nghi Bao lanh thuc hien & tam ung PO MSTT.docx";
                     /*truy Suất thông tin của Contract*/
                     ContractObj contractObj = new ContractObj();
@@ -221,13 +223,31 @@ namespace OPM.GUI
 
         private void btnKTKT_Click(object sender, EventArgs e)
         {
-            string strContractDirectory = txbIDContract.Text.Replace('/', '_');
-            strContractDirectory = strContractDirectory.Replace('-', '_');
-            string strPODirectory = @"F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
+            //Check và tạo forder theo mẫu
+            string DriveName = "";
+            DriveInfo[] driveInfos = DriveInfo.GetDrives();
+            foreach (DriveInfo driveInfo in driveInfos)
+            {
+                //MessageBox.Show(driveInfo.Name.ToString());
+                if (String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"D:\") == 0 || String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"E:\") == 0)
+                {
+                    //MessageBox.Show(driveInfo.Name.ToString().Substring(0, 1));
+                    DriveName = driveInfo.Name.ToString().Substring(0, 3);
+                    break;
+                }
+            }
+            Directory.CreateDirectory(DriveName + "OPM");
+            Directory.CreateDirectory(DriveName + "OPM" + txbPOName.Text);
+            string strPODirectory = DriveName + "OPM\\" + txbPOName.Text;
+            //string strContractDirectory = txbIDContract.Text.Replace('/', '_');
+            //strContractDirectory = strContractDirectory.Replace('-', '_');
+            //string strPODirectory = @"F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
 
             /*Create Bao Lanh Thuc Hien Hop Dong*/
             int ret = 0;
-            string fileBBKTKTHH_temp = @"F:\LP\Bien_Ban_KTKT_HH_Template.docx";
+            Directory.CreateDirectory(DriveName + "LP");
+            string fileBBKTKTHH_temp = DriveName + @"LP\Bien_Ban_KTKT_HH_Template.docx";
+            //string fileBBKTKTHH_temp = @"F:\LP\Bien_Ban_KTKT_HH_Template.docx";
             string strBBKTKT = strPODirectory + "\\Biên Bản Kiểm Tra Kỹ Thuật_" + txbPOName.Text + "_" + txbIDContract.Text + ".docx";
             strBBKTKT = strBBKTKT.Replace("/", "_");
             ContractObj contractObj = new ContractObj();
