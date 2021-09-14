@@ -144,7 +144,7 @@ namespace OPM.GUI
 
                     /*Create Bao Lanh Thuc Hien Hop Dong*/
                     int ret2 = 0;
-                    string fileBBKTKTHH_temp = @"F:\LP\Bien_Ban_KTKT_HH_Template.docx";
+                    string fileBBKTKTHH_temp = DriveName+@"Bien_Ban_KTKT_HH_Template.docx";
                     string strBBKTKT = strPODirectory + "\\Biên Bản Kiểm Tra Kỹ Thuật_" + txbPONumber.Text + "_" + txbIDContract.Text + ".docx";
                     strBBKTKT = strBBKTKT.Replace("/", "_");
                     
