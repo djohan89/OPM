@@ -70,9 +70,26 @@ namespace OPM.GUI
             {
                 MessageBox.Show("Lưu không thành công");
             }
-            string strContractDirectory = dP.IdContract.Replace('/', '_');
-            strContractDirectory = strContractDirectory.Replace('-', '_');
-            string strfileDP = "F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
+            //Check ổ đĩa và tạo forder trên PC
+            string DriveName = "";
+            DriveInfo[] driveInfos = DriveInfo.GetDrives();
+            foreach (DriveInfo driveInfo in driveInfos)
+            {
+                //MessageBox.Show(driveInfo.Name.ToString());
+                if (String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"D:\") == 0 || String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"E:\") == 0)
+                {
+                    //MessageBox.Show(driveInfo.Name.ToString().Substring(0, 1));
+                    DriveName = driveInfo.Name.ToString().Substring(0, 3);
+                    break;
+                }
+            }
+            string strContractDirectory = DriveName + "OPM\\" + txbPOName.Text;
+            Directory.CreateDirectory(DriveName + "OPM");
+            Directory.CreateDirectory(DriveName + "OPM" + txbPOName.Text);
+            MessageBox.Show(strContractDirectory);
+            //string strContractDirectory = dP.IdContract.Replace('/', '_');
+            //strContractDirectory = strContractDirectory.Replace('-', '_');
+            //string strfileDP = "F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
             SiteInfo siteInfo = new SiteInfo();
             siteInfo.GetSiteInfoObject(dP.IdContract, ref siteInfo);
             if (1 == ret)
