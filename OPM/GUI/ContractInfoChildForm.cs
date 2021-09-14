@@ -26,7 +26,7 @@ namespace OPM.GUI
 
         /*Object Contract for Contract form*/
         private ContractObj newContract = new ContractObj();
-
+        private static string DriveName;
         public ContractInfoChildForm()
         {
             InitializeComponent();
@@ -100,7 +100,6 @@ namespace OPM.GUI
                 dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
             }
         }*/
-        public static string tam;
         private void btnSave_Click(object sender, EventArgs e)
         {
             int ret = 0;
@@ -135,17 +134,18 @@ namespace OPM.GUI
                     if (String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"D:\") == 0 || String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"E:\") == 0)
                     {
                         //MessageBox.Show(driveInfo.Name.ToString().Substring(0, 1));
-                        tam = driveInfo.Name.ToString().Substring(0, 3);
+                        DriveName = driveInfo.Name.ToString().Substring(0, 3);
                         break;
                     }
                 }
-                Directory.CreateDirectory(tam + "OPM");
-                Directory.CreateDirectory(tam + "OPM" + tbContract.Text);
-                string strContractDirectory = tam + "OPM\\" + tbContract.Text;
+                
+                string strContractDirectory = DriveName + "OPM\\" + tbContract.Text;
                 if (!Directory.Exists(strContractDirectory))
                 {
 
                     //Directory.CreateDirectory(strContractDirectory);
+                    Directory.CreateDirectory(DriveName + "OPM");
+                    Directory.CreateDirectory(DriveName + "OPM" + tbContract.Text);
                     MessageBox.Show(strContractDirectory);
                     MessageBox.Show("Folder Contract have been created!!!");
                 }
