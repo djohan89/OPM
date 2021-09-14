@@ -60,11 +60,27 @@ namespace OPM.GUI
             newPO.DefaultActiveDatePO = TimepickerDefaultActive.Value.ToString("yyyy-MM-dd");
             newPO.DeadLinePO = TimePickerDeadLinePO.Value.ToString("yyyy-MM-dd");
             newPO.TotalValuePO = float.Parse(txbValuePO.Text);
-
+            
+            //Check và tạo forder theo mẫu
+            string DriveName = "";
+            DriveInfo[] driveInfos = DriveInfo.GetDrives();
+            foreach (DriveInfo driveInfo in driveInfos)
+            {
+                //MessageBox.Show(driveInfo.Name.ToString());
+                if (String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"D:\") == 0 || String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"E:\") == 0)
+                {
+                    //MessageBox.Show(driveInfo.Name.ToString().Substring(0, 1));
+                    DriveName = driveInfo.Name.ToString().Substring(0, 3);
+                    break;
+                }
+            }
+            Directory.CreateDirectory(DriveName + "OPM");
+            Directory.CreateDirectory(DriveName + "OPM" + txbPOName.Text);
+            string strPODirectory = DriveName + "OPM\\" + txbPOName.Text;
             /*Create Folder Contract on F Disk*/
-            string strContractDirectory = txbIDContract.Text.Replace('/', '_');
-            strContractDirectory = strContractDirectory.Replace('-', '_');
-            string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
+            //string strContractDirectory = txbIDContract.Text.Replace('/', '_');
+            //strContractDirectory = strContractDirectory.Replace('-', '_');
+            //string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
 
             ret = newPO.GetDetailPO(txbPOCode.Text);
             if (0 == ret)
