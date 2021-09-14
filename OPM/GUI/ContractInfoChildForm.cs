@@ -165,7 +165,9 @@ namespace OPM.GUI
                     UpdateCatalogPanel(tbContract.Text);
                     /*Create Bao Lanh Thuc Hien Hop Dong*/
                     this.Cursor = Cursors.WaitCursor;
-                    string filename = @"F:\LP\MSTT_Template.docx";
+                    Directory.CreateDirectory(DriveName + "LP");
+                    string filename = DriveName+ @"LP\MSTT_Template.docx";
+                    //string filename = @"F:\LP\MSTT_Template.docx";
                     string strBLHPName = strContractDirectory + "\\Bao_Lanh_Hop_Dong.docx";
                     OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, dateTimePickerDateSignedPO.Value.ToString(), tbxSiteB.Text, txbGaranteeValue.Text, txbGaranteeActiveDate.Text);
                     /*Send Email To DF*/
