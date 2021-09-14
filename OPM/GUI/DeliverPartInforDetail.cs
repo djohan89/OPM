@@ -86,6 +86,7 @@ namespace OPM.GUI
             string strContractDirectory = DriveName + "OPM\\" + txbPOName.Text;
             Directory.CreateDirectory(DriveName + "OPM");
             Directory.CreateDirectory(DriveName + "OPM" + txbPOName.Text);
+            string strfileDP = DriveName+ "OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
             MessageBox.Show(strContractDirectory);
             //string strContractDirectory = dP.IdContract.Replace('/', '_');
             //strContractDirectory = strContractDirectory.Replace('-', '_');
