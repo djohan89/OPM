@@ -86,7 +86,9 @@ namespace OPM.GUI
                 {
                     MessageBox.Show(ConstantVar.CreateNewConfirmPOSuccess);
                     /*Create Bao Lanh Thuc Hien Hop Dong*/
-                    string fileCVXNDH_temp = @"F:\LP\CV_XNDH_Template.docx";
+                    Directory.CreateDirectory(DriveName + "LP");
+                    string fileCVXNDH_temp = DriveName+@"LP\CV_XNDH_Template.docx";
+                    //string fileCVXNDH_temp = @"F:\LP\CV_XNDH_Template.docx";
                     string strCVXNDHName = strPODirectory + "\\CV Xác Nhận Đơn Hàng_" + txbPONumber.Text + "_" + txbIDContract.Text + ".docx";
                     strCVXNDHName = strCVXNDHName.Replace("/", "_");
                     ContractObj contractObj = new ContractObj();
