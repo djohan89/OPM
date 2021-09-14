@@ -69,10 +69,25 @@ namespace OPM.GUI
 
             int ret = 0;
             /*Create Folder NTKT*/
-            string strContractDirectory = txbIDContract.Text.Replace('/', '_');
-            strContractDirectory = strContractDirectory.Replace('-', '_');
-            string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPONumber.Text + "\\" + "NTKT_" +txbNTKTID.Text.ToString();
-
+            //string strContractDirectory = txbIDContract.Text.Replace('/', '_');
+            //strContractDirectory = strContractDirectory.Replace('-', '_');
+            //string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPONumber.Text + "\\" + "NTKT_" +txbNTKTID.Text.ToString();
+            string DriveName = "";
+            DriveInfo[] driveInfos = DriveInfo.GetDrives();
+            foreach (DriveInfo driveInfo in driveInfos)
+            {
+                //MessageBox.Show(driveInfo.Name.ToString());
+                if (String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"D:\") == 0 || String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"E:\") == 0)
+                {
+                    //MessageBox.Show(driveInfo.Name.ToString().Substring(0, 1));
+                    DriveName = driveInfo.Name.ToString().Substring(0, 3);
+                    break;
+                }
+            }
+            Directory.CreateDirectory(DriveName + "OPM");
+            Directory.CreateDirectory(DriveName + "OPM" + txbPONumber.Text);
+            Directory.CreateDirectory(DriveName + "OPM" + txbPONumber.Text + "\\" + "NTKT_" + txbNTKTID.Text.ToString());
+            string strPODirectory = DriveName + "OPM\\" + txbPONumber.Text + "\\" + "NTKT_" + txbNTKTID.Text.ToString();
             ret = newNKTTObj.CheckExistNTKT(txbNTKTID.Text);
             if (0 == ret)
             {
@@ -97,9 +112,13 @@ namespace OPM.GUI
                     MessageBox.Show(ConstantVar.CreateNewNTKTSuccess);
                     UpdateCatalogPanel("NTKT_"+txbNTKTID.Text);
                     /*Create Bao Lanh Thuc Hien Hop Dong*/
-                    string fileRQNTKT_temp = @"F:\LP\NTKT_Request_template.docx";
-                    string fileSofware_Certificate_Template = @"F:\LP\Sofware_Certificate_Template.docx";
-                    string fileCNCL = @"F:\LP\GIAY CHUNG NHAN CHAT LUONG_TONG_HOP_Template.docx";
+                    Directory.CreateDirectory(DriveName + "LP");
+                    //string fileRQNTKT_temp = @"F:\LP\NTKT_Request_template.docx";
+                    //string fileSofware_Certificate_Template = @"F:\LP\Sofware_Certificate_Template.docx";
+                    //string fileCNCL = @"F:\LP\GIAY CHUNG NHAN CHAT LUONG_TONG_HOP_Template.docx";
+                    string fileRQNTKT_temp = DriveName + @"LP\NTKT_Request_template.docx";
+                    string fileSofware_Certificate_Template = DriveName + @"\LP\Sofware_Certificate_Template.docx";
+                    string fileCNCL = DriveName + @"LP\GIAY CHUNG NHAN CHAT LUONG_TONG_HOP_Template.docx";
                     string strRQNTKTName = strPODirectory + "\\CV De Nghi NTKT_" + txbPONumber.Text +"_"+ txbIDContract.Text +".docx";
                     string strSofware_Certificate = strPODirectory + "\\Chung chi ban quyen phan mem" + txbPONumber.Text + "_" + txbIDContract.Text + ".docx";
                     string strCNCL = strPODirectory + "\\Chung nhan chat luong" + txbPONumber.Text + "_" + txbIDContract.Text + ".docx";
