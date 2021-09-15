@@ -26,7 +26,6 @@ namespace OPM.GUI
 
         /*Object Contract for Contract form*/
         private ContractObj newContract = new ContractObj();
-        private static string DriveName;
         public ContractInfoChildForm()
         {
             InitializeComponent();
@@ -120,6 +119,7 @@ namespace OPM.GUI
             newContract.SiteB = tbxSiteB.Text;
             newContract.ExperationDate = ExpirationDate.Value.ToString("yyyy-MM-dd");
             ret = newContract.GetDetailContract(tbContract.Text);
+            string DriveName = "";
             if(0==ret)
             {
                 /*Create Folder Contract on F Disk*/
