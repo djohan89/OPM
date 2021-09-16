@@ -167,36 +167,24 @@ namespace OPM.OPMEnginee
 
         public int InsertNewPO(PO po)
         {
-            string strInsertPONew = "insert into PO values (";
-            strInsertPONew += "'";
-            strInsertPONew += po.IDPO;
-            strInsertPONew += "','";
-            strInsertPONew += po.IDContract;
-            strInsertPONew += "','";
-            strInsertPONew += po.PONumber;
-            strInsertPONew += "','";
-            strInsertPONew += po.NumberOfDevice.ToString();
-            strInsertPONew += "','";
-            strInsertPONew += po.DateCreatedPO;
-            strInsertPONew += "','";
-
-            strInsertPONew += "','";
-
-            strInsertPONew += po.DurationConfirmPO;
-            strInsertPONew += "','";
-            strInsertPONew += po.DefaultActiveDatePO;
-            strInsertPONew += "','";
-            strInsertPONew += po.DeadLinePO;
-            strInsertPONew += "','";
-
-            strInsertPONew += "','";
-
-            strInsertPONew += "','";
-
-            strInsertPONew += "','";
-
-            strInsertPONew += po.TotalValuePO;
-            strInsertPONew += "')";
+            string strInsertPONew = @"
+            INSERT INTO [dbo].[PO]
+           ([id]
+           ,[id_contract]
+           ,[po_number]
+           ,[numberofdevice]
+           ,[datecreated]
+           ,[priceunit]
+           ,[dateconfirm]
+           ,[dateperform]
+           ,[dateline]
+           ,[targetdeliveradd]
+           ,[email_BLBH_status]
+           ,[email_BLTH_status]
+           ,[totalvalue]
+           ,[tupo])
+            VALUES
+           ('" + po.IDPO + "','" + po.IDContract + "','" + po.PONumber + "','" + po.NumberOfDevice + "','" + po.DateCreatedPO + "',null,'" + po.DurationConfirmPO + "','" + po.DefaultActiveDatePO + "','" + po.DeadLinePO + "',null,null,null,'" + po.TotalValuePO + "',null)";
             int ret = OPMDBHandler.fInsertData(strInsertPONew);
             if (0 == ret)
             {
