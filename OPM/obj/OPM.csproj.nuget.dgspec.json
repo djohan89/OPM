@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Github\\OPM\\OPM.csproj": {}
+    "D:\\GitHub\\OPM\\OPM\\OPM.csproj": {}
   },
   "projects": {
-    "D:\\Github\\OPM\\OPM.csproj": {
+    "D:\\GitHub\\OPM\\OPM\\OPM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Github\\OPM\\OPM.csproj",
+        "projectUniqueName": "D:\\GitHub\\OPM\\OPM\\OPM.csproj",
         "projectName": "OPM",
-        "projectPath": "D:\\Github\\OPM\\OPM.csproj",
-        "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "D:\\Github\\OPM\\obj\\",
+        "projectPath": "D:\\GitHub\\OPM\\OPM\\OPM.csproj",
+        "packagesPath": "C:\\Users\\XUANTHANH\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\OPM\\OPM\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\XUANTHANH\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

@@ -142,7 +142,7 @@ namespace OPM.GUI
             /*OK Important for Communication*/
 
             /*Check What Label Checked and it's parent Checked*/
-            //MessageBox.Show(treeView1.SelectedNode.Name.ToString());
+            MessageBox.Show(treeView1.SelectedNode.Name.ToString());
 
             string strNodeID = treeView1.SelectedNode.Name.ToString();
             if (null != treeView1.SelectedNode.Parent)
@@ -152,7 +152,7 @@ namespace OPM.GUI
             }    
             else
             {
-                //MessageBox.Show("No Parent Node");
+                MessageBox.Show("No Parent Node");
             }
             string[] temp = strNodeID.Split('_');
             temp[0] += "_";
@@ -166,12 +166,13 @@ namespace OPM.GUI
                     /*DASHBOAD GET REQEST FROM CONTRACT GUI*/
                     contractInfoChildForm.RequestDashBoardOpenPOForm = new ContractInfoChildForm.RequestDashBoardOpenChildForm(OpenPOForm);
                     
+                    contractInfoChildForm.SetValueItemForm(temp[1]);
+                    
 
                     //PurchaseOderInfor purchaseOderInfor1 = new PurchaseOderInfor();
                     //purchaseOderInfor1.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
 
                     OpenChidForm(contractInfoChildForm);
-                    contractInfoChildForm.SetValueItemForm(temp[1]);
                     contractInfoChildForm.requestDashBoardOpendescriptionForm = new ContractInfoChildForm.RequestDashBoardOpenDescriptionForm(OpenDescription);
                     break;
                 case ConstantVar.POType:
@@ -398,13 +399,12 @@ namespace OPM.GUI
         {
             NTKTInfor nTKTInfor= new NTKTInfor();
             //nTKTInfor.UpdateCatalogPanel = new NTKTInfor.UpdateCatalogDelegate(GetCatalogvalue);
-            //nTKTInfor.SetKHMS(strKHMS);
+            nTKTInfor.SetKHMS(strKHMS);
             nTKTInfor.requestDashBoardPurchaseOderForm = new NTKTInfor.RequestDashBoardPurchaseOderForm(OpenPOForm);
-            nTKTInfor.UpdateCatalogPanel = new NTKTInfor.UpdateCatalogDelegate(GetCatalogvalue);
-            //strContractID = strContractID.Replace("Contract_","");
-            //nTKTInfor.SetContractID(strContractID);
-            //nTKTInfor.SetPOID(strPOID);
-            // nTKTInfor.SetPONumber(strPONumber);
+            strContractID = strContractID.Replace("Contract_","");
+            nTKTInfor.SetContractID(strContractID);
+            nTKTInfor.SetPOID(strPOID);
+            nTKTInfor.SetPONumber(strPONumber);
             OpenChidForm(nTKTInfor);
             return;
         }
