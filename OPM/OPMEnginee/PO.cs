@@ -167,7 +167,6 @@ namespace OPM.OPMEnginee
 
         public int InsertNewPO(PO po)
         {
-            //
             string strInsertPONew = "insert into PO values (";
             strInsertPONew += "'";
             strInsertPONew += po.IDPO;
@@ -193,7 +192,6 @@ namespace OPM.OPMEnginee
             strInsertPONew += po.TotalValuePO;
             strInsertPONew += "','";
             strInsertPONew += "')";
-            //
             //string strInsertPONew = @"INSERT INTO [dbo].[PO]
            //([id]
            //,[id_contract]
