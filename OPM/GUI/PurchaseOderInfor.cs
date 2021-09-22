@@ -295,7 +295,8 @@ namespace OPM.GUI
                     }
                     else
                     {
-                        MessageBox.Show("đọc lỗi");
+                    
+                        MessageBox.Show("Erorr");
                     }
                 }
                
