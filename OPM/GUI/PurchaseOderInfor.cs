@@ -60,11 +60,27 @@ namespace OPM.GUI
             newPO.DefaultActiveDatePO = TimepickerDefaultActive.Value.ToString("yyyy-MM-dd");
             newPO.DeadLinePO = TimePickerDeadLinePO.Value.ToString("yyyy-MM-dd");
             newPO.TotalValuePO = float.Parse(txbValuePO.Text);
-
+            
+            //Check và tạo forder theo mẫu
+            string DriveName = "";
+            DriveInfo[] driveInfos = DriveInfo.GetDrives();
+            foreach (DriveInfo driveInfo in driveInfos)
+            {
+                //MessageBox.Show(driveInfo.Name.ToString());
+                if (String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"D:\") == 0 || String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"E:\") == 0)
+                {
+                    //MessageBox.Show(driveInfo.Name.ToString().Substring(0, 1));
+                    DriveName = driveInfo.Name.ToString().Substring(0, 3);
+                    break;
+                }
+            }
+            Directory.CreateDirectory(DriveName + "OPM");
+            Directory.CreateDirectory(DriveName + "OPM" + txbPOName.Text);
+            string strPODirectory = DriveName + "OPM\\" + txbPOName.Text;
             /*Create Folder Contract on F Disk*/
-            string strContractDirectory = txbIDContract.Text.Replace('/', '_');
-            strContractDirectory = strContractDirectory.Replace('-', '_');
-            string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
+            //string strContractDirectory = txbIDContract.Text.Replace('/', '_');
+            //strContractDirectory = strContractDirectory.Replace('-', '_');
+            //string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
 
             ret = newPO.GetDetailPO(txbPOCode.Text);
             if (0 == ret)
@@ -91,7 +107,9 @@ namespace OPM.GUI
                     MessageBox.Show(ConstantVar.CreateNewPOSuccess);
                     UpdateCatalogPanel(txbPOName.Text);
                     /*Create Bao Lanh Thuc Hien Hop Dong*/
-                    string fileBLTUPO_temp = @"F:\LP\BLPO_Template.docx";
+                    Directory.CreateDirectory(DriveName + "LP");
+                    string fileBLTUPO_temp = DriveName+@"LP\BLPO_Template.docx";
+                    //string fileBLTUPO_temp = @"F:\LP\BLPO_Template.docx";
                     string strBLTUPOName = strPODirectory + "\\De nghi Bao lanh thuc hien & tam ung PO MSTT.docx";
                     /*truy Suất thông tin của Contract*/
                     ContractObj contractObj = new ContractObj();
@@ -99,9 +117,9 @@ namespace OPM.GUI
                     this.Cursor = Cursors.WaitCursor;
                     OpmWordHandler.Create_BLTU_PO(fileBLTUPO_temp, strBLTUPOName, txbPOName.Text, txbIDContract.Text, contractObj.NameContract, contractObj.DateSigned, TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd"),txbValuePO.Text, txbTUPO.Text, contractObj.SiteB, TimepickerDefaultActive.Value.ToString("yyyy-MM-dd"));
                     /*Send Email To DF*/
-
-                    OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLTUPOName);
-                    this.Cursor = Cursors.Default;
+                    //Tạm thời chưa xử lý phần Gmail tự động gửi
+                    //OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLTUPOName);
+                    //this.Cursor = Cursors.Default;
                 }
 
                 /*Create Bao Lanh Thuc Hien Hop Dong*/
@@ -205,13 +223,31 @@ namespace OPM.GUI
 
         private void btnKTKT_Click(object sender, EventArgs e)
         {
-            string strContractDirectory = txbIDContract.Text.Replace('/', '_');
-            strContractDirectory = strContractDirectory.Replace('-', '_');
-            string strPODirectory = @"F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
+            //Check và tạo forder theo mẫu
+            string DriveName = "";
+            DriveInfo[] driveInfos = DriveInfo.GetDrives();
+            foreach (DriveInfo driveInfo in driveInfos)
+            {
+                //MessageBox.Show(driveInfo.Name.ToString());
+                if (String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"D:\") == 0 || String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"E:\") == 0)
+                {
+                    //MessageBox.Show(driveInfo.Name.ToString().Substring(0, 1));
+                    DriveName = driveInfo.Name.ToString().Substring(0, 3);
+                    break;
+                }
+            }
+            Directory.CreateDirectory(DriveName + "OPM");
+            Directory.CreateDirectory(DriveName + "OPM" + txbPOName.Text);
+            string strPODirectory = DriveName + "OPM\\" + txbPOName.Text;
+            //string strContractDirectory = txbIDContract.Text.Replace('/', '_');
+            //strContractDirectory = strContractDirectory.Replace('-', '_');
+            //string strPODirectory = @"F:\\OPM\\" + strContractDirectory + "\\" + txbPOName.Text;
 
             /*Create Bao Lanh Thuc Hien Hop Dong*/
             int ret = 0;
-            string fileBBKTKTHH_temp = @"F:\LP\Bien_Ban_KTKT_HH_Template.docx";
+            Directory.CreateDirectory(DriveName + "LP");
+            string fileBBKTKTHH_temp = DriveName + @"LP\Bien_Ban_KTKT_HH_Template.docx";
+            //string fileBBKTKTHH_temp = @"F:\LP\Bien_Ban_KTKT_HH_Template.docx";
             string strBBKTKT = strPODirectory + "\\Biên Bản Kiểm Tra Kỹ Thuật_" + txbPOName.Text + "_" + txbIDContract.Text + ".docx";
             strBBKTKT = strBBKTKT.Replace("/", "_");
             ContractObj contractObj = new ContractObj();
@@ -242,8 +278,9 @@ namespace OPM.GUI
         public string sConnectionString= null;
         private void importPO_Click(object sender, EventArgs e)
         {
-           // openFileExcel.Multiselect = true;
-             openFileExcel.Filter = "Excel Files(.xls)|*.xls| Excel Files(.xlsx)| *.xlsx | Excel Files(*.xlsm) | *.xlsm";
+            //openFileExcel.Multiselect = true;
+            //openFileExcel.Filter = "Excel Files(.xls)|*.xls| Excel Files(.xlsx)| *.xlsx | Excel Files(*.xlsm) | *.xlsm";
+            //openFileExcel.Filter = "Excel 94-2020 Workbook|*.xls|Excel Workbook|*.xlsx*";
             if (openFileExcel.ShowDialog() == DialogResult.OK)
             {
                 if (File.Exists(openFileExcel.FileName))
@@ -258,7 +295,8 @@ namespace OPM.GUI
                     }
                     else
                     {
-                        MessageBox.Show("đọc lỗi");
+                    
+                        MessageBox.Show("Erorr");
                     }
                 }
                

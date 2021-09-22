@@ -98,6 +98,7 @@ namespace OPM.WordHandler
 
         public static void Create_BLTU_Contract(object filename, object SaveAs, string strPOnumber, string strIdContract, string strSigndate, string strPOdate)
         {
+            //thư viện Microsoft.Office.Interop.Word
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;
             WordOffice.Document myWordDoc = null;
@@ -164,12 +165,13 @@ namespace OPM.WordHandler
                     object readOnly = false;
                     object isVisible = false;
                     wordApp.Visible = false;
-
+                    //Khởi tạo đói tượng myWordDoc để điền thông tin vào Word
                     myWordDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
                                               ref missing, ref missing, ref missing,
                                               ref missing, ref missing, ref missing,
                                               ref missing, ref missing, ref missing,
                                               ref missing, ref missing, ref missing, ref missing);
+                    //Bắt đầu thực hiện chạy chương trình đọc thông tin 
                     myWordDoc.Activate();
 
                     //find and replace
