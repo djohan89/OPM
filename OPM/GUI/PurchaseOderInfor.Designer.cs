@@ -428,6 +428,7 @@ namespace OPM.GUI
             this.Controls.Add(this.btnSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PurchaseOderInfor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Purchase Oder Infor";
             this.Load += new System.EventHandler(this.PurchaseOderInfor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPO)).EndInit();

@@ -117,9 +117,9 @@ namespace OPM.GUI
                     this.Cursor = Cursors.WaitCursor;
                     OpmWordHandler.Create_BLTU_PO(fileBLTUPO_temp, strBLTUPOName, txbPOName.Text, txbIDContract.Text, contractObj.NameContract, contractObj.DateSigned, TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd"),txbValuePO.Text, txbTUPO.Text, contractObj.SiteB, TimepickerDefaultActive.Value.ToString("yyyy-MM-dd"));
                     /*Send Email To DF*/
-
-                    OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLTUPOName);
-                    this.Cursor = Cursors.Default;
+                    //Tạm thời chưa xử lý phần Gmail tự động gửi
+                    //OPMEmailHandler.fSendEmail("Mail From DoanTD Gmail", strBLTUPOName);
+                    //this.Cursor = Cursors.Default;
                 }
 
                 /*Create Bao Lanh Thuc Hien Hop Dong*/
@@ -278,8 +278,9 @@ namespace OPM.GUI
         public string sConnectionString= null;
         private void importPO_Click(object sender, EventArgs e)
         {
-           // openFileExcel.Multiselect = true;
-             openFileExcel.Filter = "Excel Files(.xls)|*.xls| Excel Files(.xlsx)| *.xlsx | Excel Files(*.xlsm) | *.xlsm";
+            //openFileExcel.Multiselect = true;
+            //openFileExcel.Filter = "Excel Files(.xls)|*.xls| Excel Files(.xlsx)| *.xlsx | Excel Files(*.xlsm) | *.xlsm";
+            //openFileExcel.Filter = "Excel 94-2020 Workbook|*.xls|Excel Workbook|*.xlsx*";
             if (openFileExcel.ShowDialog() == DialogResult.OK)
             {
                 if (File.Exists(openFileExcel.FileName))
