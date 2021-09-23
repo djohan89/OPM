@@ -178,15 +178,23 @@ namespace OPM.WordHandler
                     FindAndReplace(wordApp, "<PO_Name>", " " + strPOnumber);
                     FindAndReplace(wordApp, "<Contract_ID>", " " + strIdContract);
                     FindAndReplace(wordApp, "<Contract_Name>", " " + strContractName);
-                    string[] Signed_DateContract = convertDateFormat.ConvertFormatDate(strSigneddateContract, "dd-MM-yyyy", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<Signed_DateContract>", " " + Signed_DateContract[0] + "/" + Signed_DateContract[1] + "/" + Signed_DateContract[2]);
-                    string[] Signed_DatePO = convertDateFormat.ConvertFormatDate(strPOSigneddate, "yyyy-MM-dd", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<Signed_DatePO>", " " + Signed_DateContract[0] + "/" + Signed_DateContract[1] + "/" + Signed_DateContract[2]);
+                    //string[] Signed_DateContract = convertDateFormat.ConvertFormatDate(strSigneddateContract, "dd-MM-yyyy", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<Signed_DateContract>", " " + Signed_DateContract[0] + "/" + Signed_DateContract[1] + "/" + Signed_DateContract[2]);
+                    //MessageBox.Show("strSigneddateContract:", strSigneddateContract.ToString());
+                    FindAndReplace(wordApp, "<Signed_DateContract>", " " + strSigneddateContract.ToString());
+                    //FindAndReplace(wordApp, "<Signed_DateContract>", convertDateFormat.ConvertFormatDate(strSigneddateContract, "dd-MM-yyyy", "dd/MM/yyyy"));
+                    //string[] Signed_DatePO = convertDateFormat.ConvertFormatDate(strPOSigneddate, "yyyy-MM-dd", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<Signed_DatePO>", " " + Signed_DateContract[0] + "/" + Signed_DateContract[1] + "/" + Signed_DateContract[2]);
+                    //FindAndReplace(wordApp, "<Signed_DatePO>", "1/1/2021");
+                   // MessageBox.Show("strPOSigneddate:", strPOSigneddate.ToString());
+                    FindAndReplace(wordApp, "<Signed_DatePO>", " " + strPOSigneddate.ToString());
                     FindAndReplace(wordApp, "<Total_Value>", " " + strPOValueNotVAT);
                     FindAndReplace(wordApp, "<Value_Tamung>", " " + strPOValueTU);
                     FindAndReplace(wordApp, "<Site_B>", " " + strSiteB);
-                    string[] Active_Date = convertDateFormat.ConvertFormatDate(strActiveDatePO, "yyyy-MM-dd", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<Active_Date>", " " + Active_Date[0] + "/" + Active_Date[1] + "/" + Active_Date[2]);
+                    //string[] Active_Date = convertDateFormat.ConvertFormatDate(strActiveDatePO, "yyyy-MM-dd", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<Active_Date>", " " + Active_Date[0] + "/" + Active_Date[1] + "/" + Active_Date[2]);
+                    //MessageBox.Show("strActiveDatePO:", strActiveDatePO.ToString());
+                    FindAndReplace(wordApp, "<Active_Date>", " " + strActiveDatePO.ToString());
                 }
                 else
                 {
