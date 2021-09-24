@@ -60,7 +60,7 @@ namespace OPM.GUI
             newPO.DefaultActiveDatePO = TimepickerDefaultActive.Value.ToString("yyyy-MM-dd");
             newPO.DeadLinePO = TimePickerDeadLinePO.Value.ToString("yyyy-MM-dd");
             newPO.TotalValuePO = float.Parse(txbValuePO.Text);
-            
+            newPO.Tupo = float.Parse(txbTUPO.Text);
             //Check và tạo forder theo mẫu
             string DriveName = "";
             DriveInfo[] driveInfos = DriveInfo.GetDrives();
@@ -98,9 +98,20 @@ namespace OPM.GUI
                 }
                 
                 ret = newPO.InsertNewPO(newPO);
-                if (0 == ret)
+                if (2 == ret)
                 {
-                    MessageBox.Show(ConstantVar.CreateNewPOFail);
+                    MessageBox.Show("Cập nhật thành công");
+                    //Tao file cap nhat
+                    string fileBLTUPO_temp = DriveName + @"LP\BLPO_Template.docx";
+                    //string fileBLTUPO_temp = @"F:\LP\BLPO_Template.docx";
+                    string strBLTUPOName = strPODirectory + "\\De nghi Bao lanh thuc hien & tam ung PO MSTT(Update).docx";
+                    /*truy Suất thông tin của Contract*/
+                    ContractObj contractObj = new ContractObj();
+                    ContractObj.GetObjectContract(txbIDContract.Text, ref contractObj);
+                    this.Cursor = Cursors.WaitCursor;
+                    OpmWordHandler.Create_BLTU_PO(fileBLTUPO_temp, strBLTUPOName, txbPOName.Text, txbIDContract.Text, contractObj.NameContract, contractObj.DateSigned, TimePickerDateCreatedPO.Value.ToString("yyyy-MM-dd"), txbValuePO.Text, txbTUPO.Text, contractObj.SiteB, TimepickerDefaultActive.Value.ToString("yyyy-MM-dd"));
+                    /*Send Email To DF*/
+                    //
                 }
                 else
                 {
@@ -135,7 +146,8 @@ namespace OPM.GUI
             }
             //đọc file excel--Dưỡng
             List<ListExpPO> listExpPOs = new List<ListExpPO>();
-            if(txbnamefilePO.Text!= null)
+            //if(txbnamefilePO.Text!= null)
+            if (txbnamefilePO.Text != null)
             {
                 int retEx = OpmExcelHandler.fReadExcelFilePO(txbnamefilePO.Text,txbPOCode.Text,ref listExpPOs);
                 if(retEx == 1){
@@ -176,13 +188,15 @@ namespace OPM.GUI
             this.txbPOCode.Text = pO.IDPO;
             this.txbPOName.Text = pO.PONumber;
             TimePickerDateCreatedPO.Value = Convert.ToDateTime(pO.DateCreatedPO);
+            //this.txbDurationConfirm.Text = pO.DurationConfirmPO.ToString();
             this.txbNumberDevice.Text = pO.NumberOfDevice.ToString();
             TimePickerDateConfirmPO.Value = Convert.ToDateTime(pO.DurationConfirmPO);
+            //this.txbActiveAfter.Text = pO.ActiveDateContract.ToString();
             TimepickerDefaultActive.Value = Convert.ToDateTime(pO.DefaultActiveDatePO);
             TimePickerDeadLinePO.Value = Convert.ToDateTime(pO.DeadLinePO);
             this.txbValuePO.Text = pO.TotalValuePO.ToString();
+            this.txbTUPO.Text = pO.Tupo.ToString();
             return;
-
         }
 
         public void SetTxbIDContract(string strIDContract)
