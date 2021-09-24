@@ -98,6 +98,7 @@ namespace OPM.WordHandler
 
         public static void Create_BLTU_Contract(object filename, object SaveAs, string strPOnumber, string strIdContract, string strSigndate, string strPOdate)
         {
+            //thư viện Microsoft.Office.Interop.Word
             WordOffice.Application wordApp = new WordOffice.Application();
             object missing = Missing.Value;
             WordOffice.Document myWordDoc = null;
@@ -164,27 +165,36 @@ namespace OPM.WordHandler
                     object readOnly = false;
                     object isVisible = false;
                     wordApp.Visible = false;
-
+                    //Khởi tạo đói tượng myWordDoc để điền thông tin vào Word
                     myWordDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
                                               ref missing, ref missing, ref missing,
                                               ref missing, ref missing, ref missing,
                                               ref missing, ref missing, ref missing,
                                               ref missing, ref missing, ref missing, ref missing);
+                    //Bắt đầu thực hiện chạy chương trình đọc thông tin 
                     myWordDoc.Activate();
 
                     //find and replace
                     FindAndReplace(wordApp, "<PO_Name>", " " + strPOnumber);
                     FindAndReplace(wordApp, "<Contract_ID>", " " + strIdContract);
                     FindAndReplace(wordApp, "<Contract_Name>", " " + strContractName);
-                    string[] Signed_DateContract = convertDateFormat.ConvertFormatDate(strSigneddateContract, "dd-MM-yyyy", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<Signed_DateContract>", " " + Signed_DateContract[0] + "/" + Signed_DateContract[1] + "/" + Signed_DateContract[2]);
-                    string[] Signed_DatePO = convertDateFormat.ConvertFormatDate(strPOSigneddate, "yyyy-MM-dd", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<Signed_DatePO>", " " + Signed_DateContract[0] + "/" + Signed_DateContract[1] + "/" + Signed_DateContract[2]);
+                    //string[] Signed_DateContract = convertDateFormat.ConvertFormatDate(strSigneddateContract, "dd-MM-yyyy", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<Signed_DateContract>", " " + Signed_DateContract[0] + "/" + Signed_DateContract[1] + "/" + Signed_DateContract[2]);
+                    //MessageBox.Show("strSigneddateContract:", strSigneddateContract.ToString());
+                    FindAndReplace(wordApp, "<Signed_DateContract>", " " + strSigneddateContract.ToString());
+                    //FindAndReplace(wordApp, "<Signed_DateContract>", convertDateFormat.ConvertFormatDate(strSigneddateContract, "dd-MM-yyyy", "dd/MM/yyyy"));
+                    //string[] Signed_DatePO = convertDateFormat.ConvertFormatDate(strPOSigneddate, "yyyy-MM-dd", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<Signed_DatePO>", " " + Signed_DateContract[0] + "/" + Signed_DateContract[1] + "/" + Signed_DateContract[2]);
+                    //FindAndReplace(wordApp, "<Signed_DatePO>", "1/1/2021");
+                   // MessageBox.Show("strPOSigneddate:", strPOSigneddate.ToString());
+                    FindAndReplace(wordApp, "<Signed_DatePO>", " " + strPOSigneddate.ToString());
                     FindAndReplace(wordApp, "<Total_Value>", " " + strPOValueNotVAT);
                     FindAndReplace(wordApp, "<Value_Tamung>", " " + strPOValueTU);
                     FindAndReplace(wordApp, "<Site_B>", " " + strSiteB);
-                    string[] Active_Date = convertDateFormat.ConvertFormatDate(strActiveDatePO, "yyyy-MM-dd", "dd/MM/yyyy");
-                    FindAndReplace(wordApp, "<Active_Date>", " " + Active_Date[0] + "/" + Active_Date[1] + "/" + Active_Date[2]);
+                    //string[] Active_Date = convertDateFormat.ConvertFormatDate(strActiveDatePO, "yyyy-MM-dd", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<Active_Date>", " " + Active_Date[0] + "/" + Active_Date[1] + "/" + Active_Date[2]);
+                    //MessageBox.Show("strActiveDatePO:", strActiveDatePO.ToString());
+                    FindAndReplace(wordApp, "<Active_Date>", " " + strActiveDatePO.ToString());
                 }
                 else
                 {
@@ -210,7 +220,74 @@ namespace OPM.WordHandler
             }
 
         }
+        public static void Create_VBTUHD(object filename, object SaveAs, string strPOnumber, string strIdContract, string strContractName, string strSigneddateContract, string strPOSigneddate, string strPOValueNotVAT, string strPOValueTU, string strSiteB, string strActiveDatePO)
+        {
+            WordOffice.Application wordApp = new WordOffice.Application();
+            object missing = Missing.Value;
+            WordOffice.Document myWordDoc = null;
 
+            try
+            {
+                if (File.Exists((string)filename))
+                {
+                    object readOnly = false;
+                    object isVisible = false;
+                    wordApp.Visible = false;
+                    //Khởi tạo đói tượng myWordDoc để điền thông tin vào Word
+                    myWordDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
+                                              ref missing, ref missing, ref missing,
+                                              ref missing, ref missing, ref missing,
+                                              ref missing, ref missing, ref missing,
+                                              ref missing, ref missing, ref missing, ref missing);
+                    //Bắt đầu thực hiện chạy chương trình đọc thông tin 
+                    myWordDoc.Activate();
+
+                    //find and replace
+                    FindAndReplace(wordApp, "<PO_Name>", " " + strPOnumber);
+                    FindAndReplace(wordApp, "<Contract_ID>", " " + strIdContract);
+                    FindAndReplace(wordApp, "<Contract_Name>", " " + strContractName);
+                    //string[] Signed_DateContract = convertDateFormat.ConvertFormatDate(strSigneddateContract, "dd-MM-yyyy", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<Signed_DateContract>", " " + Signed_DateContract[0] + "/" + Signed_DateContract[1] + "/" + Signed_DateContract[2]);
+                    //MessageBox.Show("strSigneddateContract:", strSigneddateContract.ToString());
+                    FindAndReplace(wordApp, "<Signed_DateContract>", " " + strSigneddateContract.ToString());
+                    //FindAndReplace(wordApp, "<Signed_DateContract>", convertDateFormat.ConvertFormatDate(strSigneddateContract, "dd-MM-yyyy", "dd/MM/yyyy"));
+                    //string[] Signed_DatePO = convertDateFormat.ConvertFormatDate(strPOSigneddate, "yyyy-MM-dd", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<Signed_DatePO>", " " + Signed_DateContract[0] + "/" + Signed_DateContract[1] + "/" + Signed_DateContract[2]);
+                    //FindAndReplace(wordApp, "<Signed_DatePO>", "1/1/2021");
+                    // MessageBox.Show("strPOSigneddate:", strPOSigneddate.ToString());
+                    FindAndReplace(wordApp, "<Signed_DatePO>", " " + strPOSigneddate.ToString());
+                    FindAndReplace(wordApp, "<Total_Value>", " " + strPOValueNotVAT);
+                    FindAndReplace(wordApp, "<Value_Tamung>", " " + strPOValueTU);
+                    FindAndReplace(wordApp, "<Site_B>", " " + strSiteB);
+                    //string[] Active_Date = convertDateFormat.ConvertFormatDate(strActiveDatePO, "yyyy-MM-dd", "dd/MM/yyyy");
+                    //FindAndReplace(wordApp, "<Active_Date>", " " + Active_Date[0] + "/" + Active_Date[1] + "/" + Active_Date[2]);
+                    //MessageBox.Show("strActiveDatePO:", strActiveDatePO.ToString());
+                    FindAndReplace(wordApp, "<Active_Date>", " " + strActiveDatePO.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("File not Found!");
+                }
+
+                //Save as
+                myWordDoc.SaveAs2(ref SaveAs, ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing,
+                                ref missing, ref missing, ref missing);
+
+                myWordDoc.Close();
+                wordApp.Quit();
+                MessageBox.Show("File Tam Ung Thực Hiện Created!");
+            }
+            catch
+            {
+                myWordDoc.Close();
+                wordApp.Quit();
+                MessageBox.Show("File Tam Ung không được Created!");
+            }
+
+        }
         public static void Create_DNTU_PO(object filename, object SaveAs)
         { }
         public static void Create_RQNTKT_PO(object filename, object SaveAs, NTKT nTKT, PO objPO, ContractObj contractObj)
