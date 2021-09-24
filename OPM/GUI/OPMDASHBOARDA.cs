@@ -144,11 +144,12 @@ namespace OPM.GUI
             /*Check What Label Checked and it's parent Checked*/
             //MessageBox.Show(treeView1.SelectedNode.Name.ToString());
 
+            if (treeView1.SelectedNode == null) return;
             string strNodeID = treeView1.SelectedNode.Name.ToString();
             if (null != treeView1.SelectedNode.Parent)
             {
                 string strParentNodeID = treeView1.SelectedNode.Parent.Name.ToString();
-                MessageBox.Show(treeView1.SelectedNode.Parent.Text);
+                //MessageBox.Show(treeView1.SelectedNode.Parent.Text);
             }    
             else
             {
@@ -174,9 +175,10 @@ namespace OPM.GUI
                     /*Display PO */
                     PurchaseOderInfor purchaseOderInfor  = new PurchaseOderInfor();
                     purchaseOderInfor.UpdateCatalogPanel = new PurchaseOderInfor.UpdateCatalogDelegate(GetCatalogvalue);
-                    MessageBox.Show(temp[1]);
+                    purchaseOderInfor.po = new DBHandler.PO_Thanh(temp[1]);
+                    purchaseOderInfor.contract = new Contract(treeView1.SelectedNode.Parent.Text);
                     purchaseOderInfor.requestDashBoardOpenNTKTForm = new PurchaseOderInfor.RequestDashBoardOpenNTKTForm(OpenNTKTForm);
-                    purchaseOderInfor.SetValueItemForPO(temp[1]);
+                    //purchaseOderInfor.SetValueItemForPO(temp[1]);
                     purchaseOderInfor.requestDaskboardOpenDP = new PurchaseOderInfor.RequestDaskboardOpenDP(OpenDpForm);
                     OpenChidForm(purchaseOderInfor);
                     break;
@@ -359,7 +361,7 @@ namespace OPM.GUI
                 purchaseOderInfor.UpdateCatalogPanel = new PurchaseOderInfor.UpdateCatalogDelegate(GetCatalogvalue);
                 /*Set Properties For Purchase Order Form*/
                 string strTemp = strParentInfo.Replace("Contract_", "");
-                purchaseOderInfor.SetTxbIDContract(strTemp);
+                //purchaseOderInfor.SetTxbIDContract(strTemp);
                 //contractInfoChildForm.SetValueItemForm();
                 OpenChidForm(purchaseOderInfor);
             }    
@@ -383,8 +385,9 @@ namespace OPM.GUI
             ContractInfoChildForm contractInfoChildForm = new ContractInfoChildForm();
             contractInfoChildForm.requestDashBoardOpendescriptionForm = new ContractInfoChildForm.RequestDashBoardOpenDescriptionForm(OpenDescription);
             strIDContract = strIDContract.Replace("Contract_","");
-            purchaseOderInfor.SetTxbIDContract(strIDContract);
-            purchaseOderInfor.SetTxbKHMS(strKHMS);
+            //purchaseOderInfor.SetTxbIDContract(strIDContract);
+            //purchaseOderInfor.SetTxbKHMS(strKHMS);
+            purchaseOderInfor.contract = new Contract(strIDContract);
             OpenChidForm(purchaseOderInfor);
             return;
 

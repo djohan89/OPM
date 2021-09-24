@@ -87,11 +87,12 @@ namespace OPM.GUI
             this.txbPOCode.Name = "txbPOCode";
             this.txbPOCode.Size = new System.Drawing.Size(444, 31);
             this.txbPOCode.TabIndex = 1;
+            this.txbPOCode.Text = "5133/CUVT-KV";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 125);
+            this.label1.Location = new System.Drawing.Point(13, 125);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 25);
@@ -116,11 +117,12 @@ namespace OPM.GUI
             this.txbIDContract.Name = "txbIDContract";
             this.txbIDContract.Size = new System.Drawing.Size(444, 31);
             this.txbIDContract.TabIndex = 1;
+            this.txbIDContract.Text = "111-2020/CUVT-ANSV/DTRR-KHMS";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 75);
+            this.label2.Location = new System.Drawing.Point(13, 75);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 25);
@@ -130,7 +132,7 @@ namespace OPM.GUI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 175);
+            this.label3.Location = new System.Drawing.Point(13, 175);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 25);
@@ -144,11 +146,12 @@ namespace OPM.GUI
             this.txbPOName.Name = "txbPOName";
             this.txbPOName.Size = new System.Drawing.Size(444, 31);
             this.txbPOName.TabIndex = 1;
+            this.txbPOName.Text = "PO4";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 225);
+            this.label4.Location = new System.Drawing.Point(13, 225);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(117, 25);
@@ -158,7 +161,7 @@ namespace OPM.GUI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 275);
+            this.label5.Location = new System.Drawing.Point(13, 275);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(151, 25);
@@ -172,11 +175,12 @@ namespace OPM.GUI
             this.txbNumberDevice.Name = "txbNumberDevice";
             this.txbNumberDevice.Size = new System.Drawing.Size(444, 31);
             this.txbNumberDevice.TabIndex = 1;
+            this.txbNumberDevice.Text = "10000";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 325);
+            this.label6.Location = new System.Drawing.Point(13, 325);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(152, 25);
@@ -190,16 +194,19 @@ namespace OPM.GUI
             this.txbDurationConfirm.Name = "txbDurationConfirm";
             this.txbDurationConfirm.Size = new System.Drawing.Size(113, 31);
             this.txbDurationConfirm.TabIndex = 1;
+            this.txbDurationConfirm.Text = "0";
+            this.txbDurationConfirm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbDurationConfirm.TextChanged += new System.EventHandler(this.txbDurationConfirm_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 375);
+            this.label7.Location = new System.Drawing.Point(13, 375);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(171, 25);
+            this.label7.Size = new System.Drawing.Size(120, 25);
             this.label7.TabIndex = 2;
-            this.label7.Text = "Default PO Hiệu Lực";
+            this.label7.Text = "Ngày hiệu lực";
             // 
             // TimePickerDateConfirmPO
             // 
@@ -216,11 +223,12 @@ namespace OPM.GUI
             this.TimepickerDefaultActive.Name = "TimepickerDefaultActive";
             this.TimepickerDefaultActive.Size = new System.Drawing.Size(284, 31);
             this.TimepickerDefaultActive.TabIndex = 4;
+            this.TimepickerDefaultActive.ValueChanged += new System.EventHandler(this.TimepickerDefaultActive_ValueChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 425);
+            this.label9.Location = new System.Drawing.Point(13, 425);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(114, 25);
@@ -242,11 +250,14 @@ namespace OPM.GUI
             this.txbDeadLine.Name = "txbDeadLine";
             this.txbDeadLine.Size = new System.Drawing.Size(113, 31);
             this.txbDeadLine.TabIndex = 1;
+            this.txbDeadLine.Text = "5";
+            this.txbDeadLine.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbDeadLine.TextChanged += new System.EventHandler(this.txbDeadLine_TextChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(17, 475);
+            this.label11.Location = new System.Drawing.Point(13, 475);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(152, 25);
@@ -258,8 +269,9 @@ namespace OPM.GUI
             this.txbValuePO.Location = new System.Drawing.Point(189, 467);
             this.txbValuePO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbValuePO.Name = "txbValuePO";
-            this.txbValuePO.Size = new System.Drawing.Size(330, 31);
+            this.txbValuePO.Size = new System.Drawing.Size(444, 31);
             this.txbValuePO.TabIndex = 1;
+            this.txbValuePO.Text = "1000000000";
             // 
             // dataGridViewPO
             // 
@@ -279,6 +291,7 @@ namespace OPM.GUI
             this.TimePickerDateCreatedPO.Name = "TimePickerDateCreatedPO";
             this.TimePickerDateCreatedPO.Size = new System.Drawing.Size(284, 31);
             this.TimePickerDateCreatedPO.TabIndex = 4;
+            this.TimePickerDateCreatedPO.ValueChanged += new System.EventHandler(this.TimePickerDateCreatedPO_ValueChanged);
             // 
             // txbTUPO
             // 
@@ -287,12 +300,13 @@ namespace OPM.GUI
             this.txbTUPO.Name = "txbTUPO";
             this.txbTUPO.Size = new System.Drawing.Size(141, 31);
             this.txbTUPO.TabIndex = 6;
+            this.txbTUPO.Text = "50";
             this.txbTUPO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 525);
+            this.label12.Location = new System.Drawing.Point(13, 525);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(114, 25);
@@ -317,12 +331,13 @@ namespace OPM.GUI
             this.txbActiveAfter.Name = "txbActiveAfter";
             this.txbActiveAfter.Size = new System.Drawing.Size(113, 31);
             this.txbActiveAfter.TabIndex = 1;
+            this.txbActiveAfter.Text = "5";
             this.txbActiveAfter.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(14, 25);
+            this.label15.Location = new System.Drawing.Point(13, 25);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(167, 25);
@@ -336,6 +351,8 @@ namespace OPM.GUI
             this.txbKHMS.Name = "txbKHMS";
             this.txbKHMS.Size = new System.Drawing.Size(444, 31);
             this.txbKHMS.TabIndex = 8;
+            this.txbKHMS.Text = "Mua sắm tập trung thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband) tương thích" +
+    " hệ thống gpon cho nhu cầu năm 2020";
             // 
             // btnNTKT
             // 
@@ -414,18 +431,18 @@ namespace OPM.GUI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1, 570);
+            this.label8.Location = new System.Drawing.Point(13, 569);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(200, 25);
+            this.label8.Size = new System.Drawing.Size(168, 25);
             this.label8.TabIndex = 16;
-            this.label8.Text = "File phân bổ hợp đồng ";
+            this.label8.Text = "Phân bổ hợp đồng ";
             // 
             // PurchaseOderInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Yellow;
+            this.BackColor = System.Drawing.Color.LightGreen;
             this.ClientSize = new System.Drawing.Size(680, 988);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.importPO);

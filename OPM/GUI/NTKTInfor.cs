@@ -154,7 +154,7 @@ namespace OPM.GUI
             nTKTRequest.InsertOrUpdate();
             //- Tạo file D:\OPM\''Tên HĐ''\"Tên PO"\"Tên NTKT".docx
             //- tạo và thông báo tạo thành công hay không file Yêu cầu NTKT
-
+            nTKTRequest.CreatNTKTRequest();
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
