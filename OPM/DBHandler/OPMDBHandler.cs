@@ -6,8 +6,6 @@ namespace OPM.DBHandler
 {
     public static class OPMDBHandler
     {
-<<<<<<< HEAD
-=======
         //static string connectionSTR = @"Data Source = LEXUANTHANH\SQLEXPRESS;Initial Catalog = OpmDB; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         static string connectionSTR = @"Data Source=THANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public static DataTable ExecuteQuery(string query, object[] parameter = null)
@@ -86,17 +84,11 @@ namespace OPM.DBHandler
             }
             return data;
         }
->>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
         public static int GetConnection(ref SqlConnection con)
         {
             try 
             {
-<<<<<<< HEAD
-                string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
-                con = new SqlConnection(strconnection);
-=======
                 con = new SqlConnection(connectionSTR);
->>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
                 return 1;
             }
             catch(Exception)
@@ -107,13 +99,7 @@ namespace OPM.DBHandler
 
         public static int fInsertData(string strSqlCommand)
         {
-<<<<<<< HEAD
-            string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
-            SqlConnection con = new SqlConnection(strconnection);
-=======
             SqlConnection con = new SqlConnection(connectionSTR);
->>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
-
             try
             {
                 con.Open();
@@ -134,12 +120,7 @@ namespace OPM.DBHandler
         }
         public static int fQuerryData1(string strQuerry)
         {
-<<<<<<< HEAD
-            string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
-            SqlConnection con = new SqlConnection(strconnection);
-=======
             SqlConnection con = new SqlConnection(connectionSTR);
->>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             try
             {
                 con.Open();
@@ -175,12 +156,7 @@ namespace OPM.DBHandler
 
         public static int fQuerryData(string strQuerry, ref DataSet ds)
         {
-<<<<<<< HEAD
-            string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
-            SqlConnection con = new SqlConnection(strconnection);
-=======
             SqlConnection con = new SqlConnection(connectionSTR);
->>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             SqlDataAdapter adapter = new SqlDataAdapter();
             SqlCommand command;
 
