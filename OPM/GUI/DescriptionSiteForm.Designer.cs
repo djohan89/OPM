@@ -45,162 +45,208 @@ namespace OPM.GUI
             this.txbRepresen = new System.Windows.Forms.TextBox();
             this.edit = new System.Windows.Forms.Button();
             this.save = new System.Windows.Forms.Button();
+            this.textBoxTaxCode = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txbID
             // 
-            this.txbID.Location = new System.Drawing.Point(107, 37);
+            this.txbID.Location = new System.Drawing.Point(153, 62);
+            this.txbID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbID.Name = "txbID";
-            this.txbID.Size = new System.Drawing.Size(130, 23);
+            this.txbID.Size = new System.Drawing.Size(184, 31);
             this.txbID.TabIndex = 0;
+            this.txbID.Text = "Công ty TNHH thiết bị Viễn thông ANSV";
             // 
             // txbhead
             // 
-            this.txbhead.Location = new System.Drawing.Point(107, 102);
+            this.txbhead.Location = new System.Drawing.Point(153, 152);
+            this.txbhead.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbhead.Name = "txbhead";
-            this.txbhead.Size = new System.Drawing.Size(130, 23);
+            this.txbhead.Size = new System.Drawing.Size(184, 31);
             this.txbhead.TabIndex = 1;
+            this.txbhead.Text = "124 Hoàng Quốc Việt, Phường Nghĩa Tân, Quận Cầu Giấy, TP.Hà Nội";
             // 
             // txbAddress
             // 
-            this.txbAddress.Location = new System.Drawing.Point(108, 170);
+            this.txbAddress.Location = new System.Drawing.Point(154, 242);
+            this.txbAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbAddress.Name = "txbAddress";
-            this.txbAddress.Size = new System.Drawing.Size(129, 23);
+            this.txbAddress.Size = new System.Drawing.Size(184, 31);
             this.txbAddress.TabIndex = 2;
+            this.txbAddress.Text = "124 Hoàng Quốc Việt, Phường Nghĩa Tân, Quận Cầu Giấy, TP.Hà Nội";
             // 
             // txbPhone
             // 
-            this.txbPhone.Location = new System.Drawing.Point(107, 243);
+            this.txbPhone.Location = new System.Drawing.Point(153, 332);
+            this.txbPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbPhone.Name = "txbPhone";
-            this.txbPhone.Size = new System.Drawing.Size(130, 23);
+            this.txbPhone.Size = new System.Drawing.Size(184, 31);
             this.txbPhone.TabIndex = 3;
+            this.txbPhone.Text = "02438362094";
             // 
             // txbFax
             // 
-            this.txbFax.Location = new System.Drawing.Point(107, 303);
+            this.txbFax.Location = new System.Drawing.Point(153, 427);
+            this.txbFax.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbFax.Name = "txbFax";
-            this.txbFax.Size = new System.Drawing.Size(130, 23);
+            this.txbFax.Size = new System.Drawing.Size(184, 31);
             this.txbFax.TabIndex = 4;
+            this.txbFax.Text = "02433861195";
             // 
             // txbAccount
             // 
-            this.txbAccount.Location = new System.Drawing.Point(108, 359);
+            this.txbAccount.Location = new System.Drawing.Point(154, 602);
+            this.txbAccount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbAccount.Name = "txbAccount";
-            this.txbAccount.Size = new System.Drawing.Size(129, 23);
-            this.txbAccount.TabIndex = 5;
+            this.txbAccount.Size = new System.Drawing.Size(184, 31);
+            this.txbAccount.TabIndex = 6;
+            this.txbAccount.Text = "26010000554593";
             // 
             // ID
             // 
             this.ID.AutoSize = true;
-            this.ID.Location = new System.Drawing.Point(12, 40);
+            this.ID.Location = new System.Drawing.Point(10, 67);
+            this.ID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(18, 15);
-            this.ID.TabIndex = 6;
-            this.ID.Text = "ID";
+            this.ID.Size = new System.Drawing.Size(38, 25);
+            this.ID.TabIndex = 0;
+            this.ID.Text = "Tên";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 105);
+            this.label1.Location = new System.Drawing.Point(10, 157);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Headquater Infor";
+            this.label1.Size = new System.Drawing.Size(106, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Trụ sở chính";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 173);
+            this.label2.Location = new System.Drawing.Point(10, 247);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 15);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Address";
+            this.label2.Size = new System.Drawing.Size(65, 25);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Địa chỉ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 246);
+            this.label3.Location = new System.Drawing.Point(10, 337);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 15);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Phone Number";
+            this.label3.Size = new System.Drawing.Size(93, 25);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Điện thoại";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 306);
+            this.label4.Location = new System.Drawing.Point(10, 427);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 15);
-            this.label4.TabIndex = 10;
+            this.label4.Size = new System.Drawing.Size(37, 25);
+            this.label4.TabIndex = 4;
             this.label4.Text = "Fax";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 362);
+            this.label5.Location = new System.Drawing.Point(10, 607);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 15);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Account";
+            this.label5.Size = new System.Drawing.Size(117, 25);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Tài khoản NH";
             // 
             // Representative
             // 
             this.Representative.AutoSize = true;
-            this.Representative.Location = new System.Drawing.Point(7, 420);
+            this.Representative.Location = new System.Drawing.Point(10, 697);
+            this.Representative.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Representative.Name = "Representative";
-            this.Representative.Size = new System.Drawing.Size(84, 15);
-            this.Representative.TabIndex = 12;
-            this.Representative.Text = "Representative";
-            this.Representative.Click += new System.EventHandler(this.label6_Click);
+            this.Representative.Size = new System.Drawing.Size(77, 25);
+            this.Representative.TabIndex = 7;
+            this.Representative.Text = "Đại diện";
             // 
             // txbRepresen
             // 
-            this.txbRepresen.Location = new System.Drawing.Point(107, 420);
+            this.txbRepresen.Location = new System.Drawing.Point(153, 692);
+            this.txbRepresen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbRepresen.Name = "txbRepresen";
-            this.txbRepresen.Size = new System.Drawing.Size(130, 23);
-            this.txbRepresen.TabIndex = 13;
+            this.txbRepresen.Size = new System.Drawing.Size(184, 31);
+            this.txbRepresen.TabIndex = 7;
+            this.txbRepresen.Text = "Nguyễn Văn Nam";
             // 
             // edit
             // 
-            this.edit.Location = new System.Drawing.Point(25, 474);
+            this.edit.Location = new System.Drawing.Point(36, 790);
+            this.edit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(75, 23);
-            this.edit.TabIndex = 14;
+            this.edit.Size = new System.Drawing.Size(107, 38);
+            this.edit.TabIndex = 0;
             this.edit.Text = "Edit";
             this.edit.UseVisualStyleBackColor = true;
             this.edit.Click += new System.EventHandler(this.edit_Click);
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(148, 474);
+            this.save.Location = new System.Drawing.Point(211, 790);
+            this.save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(75, 23);
-            this.save.TabIndex = 15;
+            this.save.Size = new System.Drawing.Size(107, 38);
+            this.save.TabIndex = 0;
             this.save.Text = "Save";
             this.save.UseVisualStyleBackColor = true;
             this.save.Click += new System.EventHandler(this.save_Click);
             // 
+            // textBoxTaxCode
+            // 
+            this.textBoxTaxCode.Location = new System.Drawing.Point(153, 512);
+            this.textBoxTaxCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxTaxCode.Name = "textBoxTaxCode";
+            this.textBoxTaxCode.Size = new System.Drawing.Size(184, 31);
+            this.textBoxTaxCode.TabIndex = 5;
+            this.textBoxTaxCode.Text = "0100113871";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 517);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 25);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Mã số thuế";
+            // 
             // DescriptionSiteForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(249, 514);
+            this.ClientSize = new System.Drawing.Size(356, 857);
             this.Controls.Add(this.save);
             this.Controls.Add(this.edit);
             this.Controls.Add(this.txbRepresen);
             this.Controls.Add(this.Representative);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ID);
+            this.Controls.Add(this.textBoxTaxCode);
             this.Controls.Add(this.txbAccount);
             this.Controls.Add(this.txbFax);
             this.Controls.Add(this.txbPhone);
             this.Controls.Add(this.txbAddress);
             this.Controls.Add(this.txbhead);
             this.Controls.Add(this.txbID);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DescriptionSiteForm";
             this.Text = "DesscriptionSiteFormcs";
             this.Load += new System.EventHandler(this.DescriptionSiteForm_Load);
@@ -229,5 +275,7 @@ namespace OPM.GUI
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Save;
         private System.Windows.Forms.Button save;
+        private System.Windows.Forms.TextBox textBoxTaxCode;
+        private System.Windows.Forms.Label label6;
     }
 }

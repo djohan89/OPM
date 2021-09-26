@@ -11,65 +11,65 @@ namespace OPM.GUI
 {
     public partial class DescriptionSiteForm : Form
     {
-        public delegate void UpdateCatalogDelegate(string value);
-        public UpdateCatalogDelegate UpdateCatalogPanel;
+        //public delegate void UpdateCatalogDelegate(string value);
+        //public UpdateCatalogDelegate UpdateCatalogPanel;
 
-        public delegate void RequestDashBoardOpenDescriptionForm(string siteId);
-        public RequestDashBoardOpenDescriptionForm requestDashBoardOpendescriptionForm;
+        //public delegate void RequestDashBoardOpenDescriptionForm(string siteId);
+        //public RequestDashBoardOpenDescriptionForm requestDashBoardOpendescriptionForm;
 
         //Truyền giá trị của Id_Site về Form Contract
         public delegate void SetIdSite(string idSite);
         public SetIdSite setIdSite;
 
 
-        private void SetDefaultValues()
-        {
-            txbID.Clear();
-            txbhead.Clear();
-            txbAddress.Clear();
-            txbPhone.Clear();
-            txbFax.Clear();
-            txbRepresen.Clear();
-            txbAccount.Clear();
-        }
-        public void setId(string value)
-        {
-            txbID.Text = value;
-            return;
-        }
-        public void setHeadquater(string value)
-        {
-            txbhead.Text = value;
-            return;
-        }
-        public void setAddress(string value)
-        {
-            txbAddress.Text = value;
-            return;
-        }
-        public void setPhone(string value)
-        {
-            txbPhone.Text = value;
-            return;
-        }
-        public void setFax(string value)
-        {
-            txbFax.Text = value;
-            return;
+        //private void SetDefaultValues()
+        //{
+        //    txbID.Clear();
+        //    txbhead.Clear();
+        //    txbAddress.Clear();
+        //    txbPhone.Clear();
+        //    txbFax.Clear();
+        //    txbRepresen.Clear();
+        //    txbAccount.Clear();
+        //}
+        //public void setId(string value)
+        //{
+        //    txbID.Text = value;
+        //    return;
+        //}
+        //public void setHeadquater(string value)
+        //{
+        //    txbhead.Text = value;
+        //    return;
+        //}
+        //public void setAddress(string value)
+        //{
+        //    txbAddress.Text = value;
+        //    return;
+        //}
+        //public void setPhone(string value)
+        //{
+        //    txbPhone.Text = value;
+        //    return;
+        //}
+        //public void setFax(string value)
+        //{
+        //    txbFax.Text = value;
+        //    return;
 
-        }
-        public void setAccount(string value)
-        {
-            txbAccount.Text = value;
-            return;
+        //}
+        //public void setAccount(string value)
+        //{
+        //    txbAccount.Text = value;
+        //    return;
 
-        }
-        public void setRepresentative(string value)
-        {
-            txbRepresen.Text = value;
-            return;
+        //}
+        //public void setRepresentative(string value)
+        //{
+        //    txbRepresen.Text = value;
+        //    return;
 
-        }
+        //}
         public void state(bool state)
         {
             txbID.ReadOnly = state;
@@ -79,16 +79,29 @@ namespace OPM.GUI
             txbFax.ReadOnly = state;
             txbRepresen.ReadOnly = state;
             txbAccount.ReadOnly = state;
+            textBoxTaxCode.ReadOnly = state;
         }
         public DescriptionSiteForm()
         {
             InitializeComponent();
         }
-        private void label6_Click(object sender, EventArgs e)
+        public DescriptionSiteForm(string id)
         {
-
+            InitializeComponent();
+            SetItemValue(id);
         }
-
+        void SetItemValue(string id)
+        {
+            Site_Info site_Info = new Site_Info(id);
+            txbID.Text = site_Info.Id;
+            txbhead.Text = site_Info.Headquater_info;
+            txbAddress.Text = site_Info.Address;
+            txbPhone.Text = site_Info.Phonenumber;
+            txbFax.Text = site_Info.Tin;
+            txbRepresen.Text = site_Info.Representative;
+            txbAccount.Text = site_Info.Account;
+            textBoxTaxCode.Text = site_Info.Type;
+        }
         private void DescriptionSiteForm_Load(object sender, EventArgs e)
         {
             state(true);
@@ -98,69 +111,26 @@ namespace OPM.GUI
         {
             state(false);
         }
-
         private void save_Click(object sender, EventArgs e)
         {
-            //Cập nhật hoặc thêm mới Site_Info
-            int ret = InsertOrUpdate(txbID.Text.Trim());
-            if (ret == 0) MessageBox.Show("update ko thành công");
+            //Cập nhật (nếu ID đã tồn tại) hoặc thêm mới Site_Info và cập nhật vào Form Contract
+            Site_Info site_Info = new Site_Info();
+            site_Info.Id = txbID.Text;
+            site_Info.Headquater_info = txbhead.Text;
+            site_Info.Address = txbAddress.Text;
+            site_Info.Phonenumber = txbPhone.Text;
+            site_Info.Type = textBoxTaxCode.Text;
+            site_Info.Tin = txbFax.Text;
+            site_Info.Account = txbAccount.Text;
+            site_Info.Representative = txbRepresen.Text;
+            if (Site_Info.Exist(txbID.Text.Trim())) site_Info.Update(); //Cập nhật vào dbo.Site_Info
             else
             {
-                state(true);
-                setIdSite(txbID.Text.Trim());
+                site_Info.Insert();             //Thêm mới vào dbo.Site_Info
+                setIdSite(txbID.Text.Trim()); //Cập nhật vào Form Contract
             }
+            this.Close();
         }
-        //Kiểm tra sự tồn tại của siteInfo.Id
-        bool Exist(string id)
-        {
-            try
-            {
-                string query = string.Format("SELECT * FROM dbo.Site_Info WHERE id = '{0}'", id);
-                DataTable table = DataProvider.ExecuteQuery(query);
-                return table.Rows.Count > 0;
-            }
-            catch
-            {
 
-            }
-            return false;
-        }
-        //Cập nhật hoặc thêm mới Site_Info
-        int InsertOrUpdate(string id)
-        {
-            int ret = 0;
-            if (id == null)
-                MessageBox.Show("Id chưa khởi tạo!");
-            else
-            {
-                if (Exist(id))
-                {
-                    string query = string.Format("UPDATE dbo.Site_Info SET headquater_info = '{1}', address= N'{2}', phonenumber = N'{3}', tin= '{4}', account = '{5}',representative = N'{6}' WHERE id = '{0}'", txbID.Text, txbhead.Text, txbAddress.Text, txbPhone.Text, txbFax.Text, txbAccount.Text, txbRepresen.Text);
-                    try
-                    {
-                        ret = DataProvider.ExecuteNonQuery(query);
-                        MessageBox.Show(string.Format("Cập nhật thành công Site_Info {0} !", id));
-                    }
-                    catch
-                    {
-                        ret = 0;
-                    }
-                }
-                else
-                {
-                    string query = string.Format(@"INSERT INTO dbo.Site_Info(id, headquater_info, address, phonenumber, tin, account, representative) VALUES(N'{0}','{1}',N'{2}',N'{3}','{4}','{5}',N'{6}')", id, txbhead.Text, txbAddress.Text, txbPhone.Text, txbFax.Text, txbAccount.Text, txbRepresen.Text);
-                    try
-                    {
-                        ret = DataProvider.ExecuteNonQuery(query);
-                        MessageBox.Show(string.Format("Tạo mới thành công Site_Info {0} !", id));
-                    }
-                    catch
-                    {
-                        ret = 0;
-                    }
-                }
-            }
-            return ret;
-        }
     }
 }

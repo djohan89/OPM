@@ -34,7 +34,7 @@ namespace OPM.GUI
             this.btnDescriptionA = new System.Windows.Forms.Button();
             this.tbContract = new System.Windows.Forms.TextBox();
             this.tbBidName = new System.Windows.Forms.TextBox();
-            this.tbAccountingCode = new System.Windows.Forms.TextBox();
+            this.tbxAccountingCode = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,6 +71,7 @@ namespace OPM.GUI
             this.label18 = new System.Windows.Forms.Label();
             this.ExpirationDate = new System.Windows.Forms.DateTimePicker();
             this.txbGaranteeActiveDate = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnDescriptionA
@@ -90,6 +91,7 @@ namespace OPM.GUI
             this.tbContract.Name = "tbContract";
             this.tbContract.Size = new System.Drawing.Size(305, 23);
             this.tbContract.TabIndex = 1;
+            this.tbContract.Text = "XXX-2021/CUVT-ANSV/DTRR-KHMS";
             // 
             // tbBidName
             // 
@@ -97,13 +99,24 @@ namespace OPM.GUI
             this.tbBidName.Name = "tbBidName";
             this.tbBidName.Size = new System.Drawing.Size(305, 23);
             this.tbBidName.TabIndex = 1;
+            this.tbBidName.Text = "Mua sắm thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband)";
             // 
-            // tbAccountingCode
+            // tbxAccountingCode
             // 
+<<<<<<< HEAD
             this.tbAccountingCode.Location = new System.Drawing.Point(140, 95);
             this.tbAccountingCode.Name = "tbAccountingCode";
             this.tbAccountingCode.Size = new System.Drawing.Size(305, 23);
             this.tbAccountingCode.TabIndex = 1;
+=======
+            this.tbxAccountingCode.Location = new System.Drawing.Point(200, 158);
+            this.tbxAccountingCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbxAccountingCode.Name = "tbxAccountingCode";
+            this.tbxAccountingCode.Size = new System.Drawing.Size(434, 31);
+            this.tbxAccountingCode.TabIndex = 1;
+            this.tbxAccountingCode.Text = "C01007";
+            this.tbxAccountingCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             // 
             // button2
             // 
@@ -155,7 +168,12 @@ namespace OPM.GUI
             // label5
             // 
             this.label5.AutoSize = true;
+<<<<<<< HEAD
             this.label5.Location = new System.Drawing.Point(10, 160);
+=======
+            this.label5.Location = new System.Drawing.Point(13, 362);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 15);
             this.label5.TabIndex = 3;
@@ -173,7 +191,12 @@ namespace OPM.GUI
             // label7
             // 
             this.label7.AutoSize = true;
+<<<<<<< HEAD
             this.label7.Location = new System.Drawing.Point(10, 220);
+=======
+            this.label7.Location = new System.Drawing.Point(13, 262);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 15);
             this.label7.TabIndex = 3;
@@ -217,11 +240,19 @@ namespace OPM.GUI
             // 
             // tbxDurationContract
             // 
+<<<<<<< HEAD
             this.tbxDurationContract.Location = new System.Drawing.Point(140, 155);
             this.tbxDurationContract.Name = "tbxDurationContract";
             this.tbxDurationContract.Size = new System.Drawing.Size(78, 23);
+=======
+            this.tbxDurationContract.Location = new System.Drawing.Point(199, 359);
+            this.tbxDurationContract.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbxDurationContract.Name = "tbxDurationContract";
+            this.tbxDurationContract.Size = new System.Drawing.Size(67, 31);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.tbxDurationContract.TabIndex = 1;
-            this.tbxDurationContract.Text = "0";
+            this.tbxDurationContract.Text = "365";
+            this.tbxDurationContract.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbxDurationContract.TextChanged += new System.EventHandler(this.tbxDurationContract_TextChanged);
             // 
             // txbTypeContract
@@ -230,6 +261,8 @@ namespace OPM.GUI
             this.txbTypeContract.Name = "txbTypeContract";
             this.txbTypeContract.Size = new System.Drawing.Size(305, 23);
             this.txbTypeContract.TabIndex = 1;
+            this.txbTypeContract.Text = "Theo đơn giá cố định";
+            this.txbTypeContract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbxValueContract
             // 
@@ -246,7 +279,7 @@ namespace OPM.GUI
             this.tbxDurationPO.Name = "tbxDurationPO";
             this.tbxDurationPO.Size = new System.Drawing.Size(250, 23);
             this.tbxDurationPO.TabIndex = 1;
-            this.tbxDurationPO.Text = "0";
+            this.tbxDurationPO.Text = "5";
             this.tbxDurationPO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbxSiteA
@@ -255,6 +288,7 @@ namespace OPM.GUI
             this.tbxSiteA.Name = "tbxSiteA";
             this.tbxSiteA.Size = new System.Drawing.Size(202, 23);
             this.tbxSiteA.TabIndex = 1;
+            this.tbxSiteA.Text = "Trung tâm cung ứng vật tư - Viễn thông TP.HCM";
             // 
             // tbxSiteB
             // 
@@ -262,10 +296,17 @@ namespace OPM.GUI
             this.tbxSiteB.Name = "tbxSiteB";
             this.tbxSiteB.Size = new System.Drawing.Size(202, 23);
             this.tbxSiteB.TabIndex = 1;
+            this.tbxSiteB.Text = "Công ty TNHH thiết bị viễn thông ANSV";
             // 
             // btnNewPO
             // 
+<<<<<<< HEAD
             this.btnNewPO.Location = new System.Drawing.Point(369, 457);
+=======
+            this.btnNewPO.Enabled = false;
+            this.btnNewPO.Location = new System.Drawing.Point(527, 762);
+            this.btnNewPO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.btnNewPO.Name = "btnNewPO";
             this.btnNewPO.Size = new System.Drawing.Size(75, 23);
             this.btnNewPO.TabIndex = 4;
@@ -285,7 +326,13 @@ namespace OPM.GUI
             // 
             // btnRemove
             // 
+<<<<<<< HEAD
             this.btnRemove.Location = new System.Drawing.Point(122, 457);
+=======
+            this.btnRemove.Enabled = false;
+            this.btnRemove.Location = new System.Drawing.Point(174, 762);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 4;
@@ -305,7 +352,13 @@ namespace OPM.GUI
             // 
             // btnCreateGarantee
             // 
+<<<<<<< HEAD
             this.btnCreateGarantee.Location = new System.Drawing.Point(10, 457);
+=======
+            this.btnCreateGarantee.Enabled = false;
+            this.btnCreateGarantee.Location = new System.Drawing.Point(14, 762);
+            this.btnCreateGarantee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.btnCreateGarantee.Name = "btnCreateGarantee";
             this.btnCreateGarantee.Size = new System.Drawing.Size(100, 23);
             this.btnCreateGarantee.TabIndex = 6;
@@ -319,7 +372,7 @@ namespace OPM.GUI
             this.txbGaranteeValue.Name = "txbGaranteeValue";
             this.txbGaranteeValue.Size = new System.Drawing.Size(100, 23);
             this.txbGaranteeValue.TabIndex = 7;
-            this.txbGaranteeValue.Text = "0";
+            this.txbGaranteeValue.Text = "50";
             this.txbGaranteeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
@@ -344,7 +397,12 @@ namespace OPM.GUI
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+<<<<<<< HEAD
             this.label14.Location = new System.Drawing.Point(240, 308);
+=======
+            this.label14.Location = new System.Drawing.Point(343, 508);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(21, 20);
             this.label14.TabIndex = 3;
@@ -359,17 +417,31 @@ namespace OPM.GUI
             // 
             // dateTimePickerDurationDateContract
             // 
+<<<<<<< HEAD
             this.dateTimePickerDurationDateContract.Location = new System.Drawing.Point(245, 155);
+=======
+            this.dateTimePickerDurationDateContract.CustomFormat = "d-m-y";
+            this.dateTimePickerDurationDateContract.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDurationDateContract.Location = new System.Drawing.Point(349, 359);
+            this.dateTimePickerDurationDateContract.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.dateTimePickerDurationDateContract.Name = "dateTimePickerDurationDateContract";
             this.dateTimePickerDurationDateContract.Size = new System.Drawing.Size(200, 23);
             this.dateTimePickerDurationDateContract.TabIndex = 9;
             // 
             // dateTimePickerActiveDateContract
             // 
+<<<<<<< HEAD
             this.dateTimePickerActiveDateContract.Location = new System.Drawing.Point(245, 215);
+=======
+            this.dateTimePickerActiveDateContract.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerActiveDateContract.Location = new System.Drawing.Point(349, 259);
+            this.dateTimePickerActiveDateContract.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.dateTimePickerActiveDateContract.Name = "dateTimePickerActiveDateContract";
             this.dateTimePickerActiveDateContract.Size = new System.Drawing.Size(200, 23);
             this.dateTimePickerActiveDateContract.TabIndex = 10;
+            this.dateTimePickerActiveDateContract.ValueChanged += new System.EventHandler(this.dateTimePickerActiveDateContract_ValueChanged);
             // 
             // label16
             // 
@@ -386,6 +458,8 @@ namespace OPM.GUI
             this.txbKHMS.Name = "txbKHMS";
             this.txbKHMS.Size = new System.Drawing.Size(305, 23);
             this.txbKHMS.TabIndex = 12;
+            this.txbKHMS.Text = "Mua sắm tập trung thiết bị đầu cuối ONT loại (2FE/GE+Wifi singleband) tương thích" +
+    " hệ thống gpon cho nhu cầu năm 2020";
             // 
             // label17
             // 
@@ -399,7 +473,12 @@ namespace OPM.GUI
             // label18
             // 
             this.label18.AutoSize = true;
+<<<<<<< HEAD
             this.label18.Location = new System.Drawing.Point(399, 280);
+=======
+            this.label18.Location = new System.Drawing.Point(293, 362);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(35, 15);
             this.label18.TabIndex = 14;
@@ -407,7 +486,14 @@ namespace OPM.GUI
             // 
             // ExpirationDate
             // 
+<<<<<<< HEAD
             this.ExpirationDate.Location = new System.Drawing.Point(245, 336);
+=======
+            this.ExpirationDate.Enabled = false;
+            this.ExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.ExpirationDate.Location = new System.Drawing.Point(350, 560);
+            this.ExpirationDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.ExpirationDate.Name = "ExpirationDate";
             this.ExpirationDate.Size = new System.Drawing.Size(200, 23);
             this.ExpirationDate.TabIndex = 15;
@@ -416,19 +502,41 @@ namespace OPM.GUI
             // 
             this.txbGaranteeActiveDate.Location = new System.Drawing.Point(140, 336);
             this.txbGaranteeActiveDate.Name = "txbGaranteeActiveDate";
+<<<<<<< HEAD
             this.txbGaranteeActiveDate.Size = new System.Drawing.Size(79, 23);
+=======
+            this.txbGaranteeActiveDate.Size = new System.Drawing.Size(67, 31);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.txbGaranteeActiveDate.TabIndex = 16;
-            this.txbGaranteeActiveDate.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txbGaranteeActiveDate.Text = "5";
+            this.txbGaranteeActiveDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbGaranteeActiveDate.TextChanged += new System.EventHandler(this.txbGaranteeActiveDate_TextChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(294, 567);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(54, 25);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "Ngày";
             // 
             // ContractInfoChildForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(456, 550);
+=======
+            this.ClientSize = new System.Drawing.Size(651, 832);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             this.Controls.Add(this.txbGaranteeActiveDate);
             this.Controls.Add(this.ExpirationDate);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txbKHMS);
@@ -463,7 +571,7 @@ namespace OPM.GUI
             this.Controls.Add(this.tbxValueContract);
             this.Controls.Add(this.txbTypeContract);
             this.Controls.Add(this.tbxDurationContract);
-            this.Controls.Add(this.tbAccountingCode);
+            this.Controls.Add(this.tbxAccountingCode);
             this.Controls.Add(this.tbBidName);
             this.Controls.Add(this.tbContract);
             this.Controls.Add(this.btnDescriptionA);
@@ -480,7 +588,7 @@ namespace OPM.GUI
         private System.Windows.Forms.Button btnDescriptionA;
         private System.Windows.Forms.TextBox tbContract;
         private System.Windows.Forms.TextBox tbBidName;
-        private System.Windows.Forms.TextBox tbAccountingCode;
+        private System.Windows.Forms.TextBox tbxAccountingCode;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -518,5 +626,6 @@ namespace OPM.GUI
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DateTimePicker ExpirationDate;
         private System.Windows.Forms.TextBox txbGaranteeActiveDate;
+        private System.Windows.Forms.Label label15;
     }
 }

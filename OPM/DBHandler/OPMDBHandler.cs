@@ -4,15 +4,99 @@ using System.Data.SqlClient;
 
 namespace OPM.DBHandler
 {
-
-    class OPMDBHandler
+    public static class OPMDBHandler
     {
+<<<<<<< HEAD
+=======
+        //static string connectionSTR = @"Data Source = LEXUANTHANH\SQLEXPRESS;Initial Catalog = OpmDB; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        static string connectionSTR = @"Data Source=THANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public static DataTable ExecuteQuery(string query, object[] parameter = null)
+        {
+            DataTable data = new DataTable();
+            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                if (parameter != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        if (item.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(item, parameter[i]);
+                            i++;
+                        }
+                    }
+                }
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data);
+                connection.Close();
+            }
+            return data;
+        }
+        public static object ExecuteScalar(string query, object[] parameter = null)
+        {
+            object data = 0;
+            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                if (parameter != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        if (item.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(item, parameter[i]);
+                            i++;
+                        }
+                    }
+                }
+                data = command.ExecuteScalar();
+                connection.Close();
+            }
+            return data;
+        }
+        public static int ExecuteNonQuery(string query, object[] parameter = null)
+        {
+            int data = 0;
+            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                if (parameter != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        if (item.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(item, parameter[i]);
+                            i++;
+                        }
+                    }
+                }
+                data = command.ExecuteNonQuery();
+                connection.Close();
+            }
+            return data;
+        }
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
         public static int GetConnection(ref SqlConnection con)
         {
             try 
             {
+<<<<<<< HEAD
                 string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
                 con = new SqlConnection(strconnection);
+=======
+                con = new SqlConnection(connectionSTR);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
                 return 1;
             }
             catch(Exception)
@@ -23,8 +107,12 @@ namespace OPM.DBHandler
 
         public static int fInsertData(string strSqlCommand)
         {
+<<<<<<< HEAD
             string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
             SqlConnection con = new SqlConnection(strconnection);
+=======
+            SqlConnection con = new SqlConnection(connectionSTR);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
 
             try
             {
@@ -46,8 +134,12 @@ namespace OPM.DBHandler
         }
         public static int fQuerryData1(string strQuerry)
         {
+<<<<<<< HEAD
             string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
             SqlConnection con = new SqlConnection(strconnection);
+=======
+            SqlConnection con = new SqlConnection(connectionSTR);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             try
             {
                 con.Open();
@@ -83,8 +175,12 @@ namespace OPM.DBHandler
 
         public static int fQuerryData(string strQuerry, ref DataSet ds)
         {
+<<<<<<< HEAD
             string strconnection = @"Data Source=LEXUANTHANH\SQLEXPRESS;Initial Catalog=OpmDB;Integrated Security=True";
             SqlConnection con = new SqlConnection(strconnection);
+=======
+            SqlConnection con = new SqlConnection(connectionSTR);
+>>>>>>> 5f2901f7d3ae90c47cf5fab756a0eb7f7d298700
             SqlDataAdapter adapter = new SqlDataAdapter();
             SqlCommand command;
 
