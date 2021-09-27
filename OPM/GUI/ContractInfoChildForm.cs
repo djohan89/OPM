@@ -26,7 +26,6 @@ namespace OPM.GUI
 
         /*Object Contract for Contract form*/
         private ContractObj newContract = new ContractObj();
-
         public ContractInfoChildForm()
         {
             InitializeComponent();
@@ -100,7 +99,6 @@ namespace OPM.GUI
                 dateTimePickerDurationDateContract.Value = dateTimePickerDateSignedPO.Value.AddDays(Convert.ToInt32(tbxDurationContract.Text));
             }
         }*/
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             int ret = 0;
@@ -121,16 +119,34 @@ namespace OPM.GUI
             newContract.SiteB = tbxSiteB.Text;
             newContract.ExperationDate = ExpirationDate.Value.ToString("yyyy-MM-dd");
             ret = newContract.GetDetailContract(tbContract.Text);
+            string DriveName = "";
             if(0==ret)
             {
                 /*Create Folder Contract on F Disk*/
-                string strContractDirectory = "F:\\OPM\\" + tbContract.Text;
-                strContractDirectory = strContractDirectory.Replace('/','_');
-                strContractDirectory = strContractDirectory.Replace('-', '_');
+                //string strContractDirectory = "F:\\OPM\\" + tbContract.Text;
+                //strContractDirectory = strContractDirectory.Replace('/','_');
+                //strContractDirectory = strContractDirectory.Replace('-', '_');
+                //Tạo thư mục trong ổ đĩa D hoặc E
+                DriveInfo[] driveInfos = DriveInfo.GetDrives();
+                foreach (DriveInfo driveInfo in driveInfos)
+                {
+                    //MessageBox.Show(driveInfo.Name.ToString());
+                    if (String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"D:\") == 0 || String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"E:\") == 0)
+                    {
+                        //MessageBox.Show(driveInfo.Name.ToString().Substring(0, 1));
+                        DriveName = driveInfo.Name.ToString().Substring(0, 3);
+                        break;
+                    }
+                }
+                
+                string strContractDirectory = DriveName + "OPM\\" + tbContract.Text;
                 if (!Directory.Exists(strContractDirectory))
                 {
 
-                    Directory.CreateDirectory(strContractDirectory);
+                    //Directory.CreateDirectory(strContractDirectory);
+                    Directory.CreateDirectory(DriveName + "OPM");
+                    Directory.CreateDirectory(DriveName + "OPM" + tbContract.Text);
+                    MessageBox.Show(strContractDirectory);
                     MessageBox.Show("Folder Contract have been created!!!");
                 }
 
@@ -149,7 +165,9 @@ namespace OPM.GUI
                     UpdateCatalogPanel(tbContract.Text);
                     /*Create Bao Lanh Thuc Hien Hop Dong*/
                     this.Cursor = Cursors.WaitCursor;
-                    string filename = @"F:\LP\MSTT_Template.docx";
+                    Directory.CreateDirectory(DriveName + "LP");
+                    string filename = DriveName+ @"LP\MSTT_Template.docx";
+                    //string filename = @"F:\LP\MSTT_Template.docx";
                     string strBLHPName = strContractDirectory + "\\Bao_Lanh_Hop_Dong.docx";
                     OpmWordHandler.CreateBLTH_Contract(filename, strBLHPName, tbContract.Text, tbBidName.Text, dateTimePickerDateSignedPO.Value.ToString(), tbxSiteB.Text, txbGaranteeValue.Text, txbGaranteeActiveDate.Text);
                     /*Send Email To DF*/

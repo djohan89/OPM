@@ -17,11 +17,16 @@ namespace OPM.OPMEnginee
         private string _defaultActiveDatePO;
         private string _deadlinePO;
         private float _totalValuePO;
-
+        private float _tupo;
         public string IDPO
         {
             set { _idPO = value; }
             get { return _idPO; }
+        }
+        public float Tupo
+        {
+            set { _tupo = value; }
+            get { return _tupo; }
         }
         public string IDContract
         {
@@ -167,42 +172,55 @@ namespace OPM.OPMEnginee
 
         public int InsertNewPO(PO po)
         {
-            string strInsertPONew = "insert into PO values (";
-            strInsertPONew += "'";
-            strInsertPONew += po.IDPO;
-            strInsertPONew += "','";
-            strInsertPONew += po.IDContract;
-            strInsertPONew += "','";
-            strInsertPONew += po.PONumber;
-            strInsertPONew += "','";
-            strInsertPONew += po.NumberOfDevice.ToString();
-            strInsertPONew += "','";
-            strInsertPONew += po.DateCreatedPO;
-            strInsertPONew += "','";
-
-            strInsertPONew += "','";
-
-            strInsertPONew += po.DurationConfirmPO;
-            strInsertPONew += "','";
-            strInsertPONew += po.DefaultActiveDatePO;
-            strInsertPONew += "','";
-            strInsertPONew += po.DeadLinePO;
-            strInsertPONew += "','";
-
-            strInsertPONew += "','";
-
-            strInsertPONew += "','";
-
-            strInsertPONew += "','";
-
-            strInsertPONew += po.TotalValuePO;
-            strInsertPONew += "')";
-            int ret = OPMDBHandler.fInsertData(strInsertPONew);
-            if (0 == ret)
+            int ret;
+            //
+            string strQueryOne = "select id from PO where id ='" + po.IDPO.ToString() + "'";
+            DataSet ds = new DataSet();
+            ret = OPMDBHandler.fQuerryData(strQueryOne, ref ds);
+            //
+            if (ret == 1)
             {
-                return ret;
+                string strSQLUpdate = "Update PO set" +
+                    " po_number = '"+po.PONumber+"'," +
+                    "numberofdevice = '"+po.NumberOfDevice+"'," +
+                    "datecreated = '"+ po.DateCreatedPO+"'," +
+                    "dateconfirm ='"+po.DateCreatedPO+"'," +
+                    "totalvalue ='"+po.TotalValuePO+"'" +
+                    " where id = '" + po.IDPO.ToString() + "'";
+                ret = OPM.DBHandler.OPMDBHandler.fInsertData(strSQLUpdate);
+                ret = 2;
             }
-            return 1;
+            else
+            {
+                string strInsertPONew = "insert into PO values (";
+                strInsertPONew += "'";
+                strInsertPONew += po.IDPO;
+                strInsertPONew += "','";
+                strInsertPONew += po.IDContract;
+                strInsertPONew += "','";
+                strInsertPONew += po.PONumber;
+                strInsertPONew += "','";
+                strInsertPONew += po.NumberOfDevice.ToString();
+                strInsertPONew += "','";
+                strInsertPONew += po.DateCreatedPO;
+                strInsertPONew += "','";
+                strInsertPONew += "','";
+                strInsertPONew += po.DurationConfirmPO;
+                strInsertPONew += "','";
+                strInsertPONew += po.DefaultActiveDatePO;
+                strInsertPONew += "','";
+                strInsertPONew += po.DeadLinePO;
+                strInsertPONew += "','";
+                strInsertPONew += "','";
+                strInsertPONew += "','";
+                strInsertPONew += "','";
+                strInsertPONew += po.TotalValuePO;
+                strInsertPONew += "','";
+                //strInsertPONew += po.Tupo;
+                strInsertPONew += "')";
+                ret = OPMDBHandler.fInsertData(strInsertPONew);
+            }
+            return ret;
         }
     }
 }

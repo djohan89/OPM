@@ -7,7 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
+using System.IO;
 namespace OPM.GUI
 {
     public partial class ConfirmPOInfor : Form
@@ -54,10 +54,26 @@ namespace OPM.GUI
 
             int ret = 0;
             /*Create Folder NTKT*/
-            string strContractDirectory = txbIDContract.Text.Replace('/', '_');
-            strContractDirectory = strContractDirectory.Replace('-', '_');
-            string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPONumber.Text;
-
+            string DriveName = "";
+            DriveInfo[] driveInfos = DriveInfo.GetDrives();
+            foreach (DriveInfo driveInfo in driveInfos)
+            {
+                //MessageBox.Show(driveInfo.Name.ToString());
+                if (String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"D:\") == 0 || String.Compare(driveInfo.Name.ToString().Substring(0, 3), @"E:\") == 0)
+                {
+                    //MessageBox.Show(driveInfo.Name.ToString().Substring(0, 1));
+                    DriveName = driveInfo.Name.ToString().Substring(0, 3);
+                    break;
+                }
+            }
+            Directory.CreateDirectory(DriveName + "OPM");
+            Directory.CreateDirectory(DriveName + "OPM" + txbPONumber.Text);
+            string strPODirectory = DriveName + "OPM\\" + txbPONumber.Text;
+            //
+            //string strContractDirectory = txbIDContract.Text.Replace('/', '_');
+            //strContractDirectory = strContractDirectory.Replace('-', '_');
+            //string strPODirectory = "F:\\OPM\\" + strContractDirectory + "\\" + txbPONumber.Text;
+            
             ret = newConfirmPOObj.CheckExistConfirmPO(txbConfirmPOID.Text);
             if (0 == ret)
             {
@@ -70,7 +86,9 @@ namespace OPM.GUI
                 {
                     MessageBox.Show(ConstantVar.CreateNewConfirmPOSuccess);
                     /*Create Bao Lanh Thuc Hien Hop Dong*/
-                    string fileCVXNDH_temp = @"F:\LP\CV_XNDH_Template.docx";
+                    Directory.CreateDirectory(DriveName + "LP");
+                    string fileCVXNDH_temp = DriveName+@"LP\CV_XNDH_Template.docx";
+                    //string fileCVXNDH_temp = @"F:\LP\CV_XNDH_Template.docx";
                     string strCVXNDHName = strPODirectory + "\\CV Xác Nhận Đơn Hàng_" + txbPONumber.Text + "_" + txbIDContract.Text + ".docx";
                     strCVXNDHName = strCVXNDHName.Replace("/", "_");
                     ContractObj contractObj = new ContractObj();
